@@ -1,0 +1,65 @@
+<pl-question-panel>
+    
+    <p>In the following LAN, the hosts (orange) are connected by a hub (green). Each host is labeled with its hostname, IPv4 address, and MAC address. The subnet mask for all hosts is 255.255.255.0.</p>
+    <pl-graph engine='circo'>
+graph topology {
+    rankdir="TB";
+    {
+        node [colorscheme=accent3]
+    hub [width=0.5 shape=rect label="hub" fontname="courier" style="filled" fillcolor=1]
+
+    {{#params.hosts}}
+    {{name}} [width=0.5 shape=rect label="{{name}}\n{{ip}}\n{{mac}}" fontname="courier" style="filled" fillcolor=3]
+    {{/params.hosts}}
+
+
+    }
+
+    {{#params.hosts}}
+        hub -- {{name}}
+    {{/params.hosts}}
+
+    }
+    </pl-graph>
+   
+  <p>Initially, the ARP table at every host is empty.</p> 
+  <p>Now, suppose <b>{{params.src.name}}</b> runs:
+<pl-code language="text">
+ping -c 1 {{params.dst.ip}}
+</pl-code>
+</p>
+
+</pl-question-panel>
+
+
+<p>Describe the sequence of packets you will see on the network (note that not all of these blocks will be used!):</p>
+
+<pl-order-blocks answers-name="single-segment" grading-method="ranking" solution-placement="bottom" feedback="first-wrong">
+    
+      <pl-answer correct="true" ranking="1"><pre>{{params.src.mac}} &gt; ff:ff:ff:ff:ff:ff, ethertype ARP (0x0806), length 42: 
+    Request who-has {{params.dst.ip}} tell {{params.src.ip}}, length 28</pre></pl-answer>
+    
+      <pl-answer correct="true" ranking="2"><pre>{{params.dst.mac}} &gt; {{params.src.mac}}, ethertype ARP (0x0806), length 42: 
+    Reply {{params.dst.ip}} is-at {{params.dst.mac}}, length 28</pre></pl-answer>
+
+      <pl-answer correct="false"><pre>{{params.dst.mac}} &gt; ff:ff:ff:ff:ff:ff, ethertype ARP (0x0806), length 42: 
+    Request who-has {{params.src.ip}} tell {{params.dst.ip}}, length 28</pre></pl-answer>
+    
+      <pl-answer correct="false"><pre>{{params.src.mac}} &gt; {{params.dst.mac}}, ethertype ARP (0x0806), length 42: 
+    Reply {{params.src.ip}} is-at {{params.src.mac}}, length 28</pre></pl-answer>
+
+      <pl-answer correct="true" ranking="3"><pre>{{params.src.mac}} &gt; {{params.dst.mac}}, ethertype IPv4 (0x0800), length 98:
+    {{params.src.ip}} &gt; {{params.dst.ip}}: ICMP echo request, id {{params.icmp}}, seq 1, length 64</pre></pl-answer>
+
+      <pl-answer correct="true" ranking="4"><pre>{{params.dst.mac}} &gt; {{params.src.mac}}, ethertype IPv4 (0x0800), length 98:
+    {{params.dst.ip}} &gt; {{params.src.ip}}: ICMP echo reply, id {{params.icmp}}, seq 1, length 64</pre></pl-answer>
+
+
+</pl-order-blocks>
+
+<pl-answer-panel><hr>
+<p><span class="badge badge-primary">Comment</span> The host that sends the ICMP echo request (<b>{{params.src.name}}</b>) must first send an ARP request to resolve the destination address {{params.dst.ip}}, and receive an ARP reply in reponse, so that it can send the ICMP echo request.
+</p>
+<p>The target of the ARP request (<b>{{params.dst.name}}</b>) will update its own ARP table with the address of the host sending the ARP request, {{params.src.name}} ({{params.src.ip}}). So it does not need to resolve the address {{params.src.ip}} in order to send the ICMP echo reply - by the time it receives the ICMP echo request, it has already added that entry to its ARP table.
+</p>
+</pl-answer-panel>
