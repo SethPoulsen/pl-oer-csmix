@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="{{ options.client_files_course_url }}/iap.css">
+<pl-question-panel>
+    <p>In the following network, the hosts (orange) each have one network interface card (NIC) attached to a common Ethernet segment. Each host is labeled with its hostname, IP address, and MAC address.</p>
+    <pl-graph engine='dot'>
+graph topology {
+    graph [splines=ortho, nodesep=1]
+    rankdir="TB";
+    {
+        node [colorscheme=accent3]
+    hub [height=0 width=5 shape=rect label="" fontname="courier" style="filled" fillcolor=1]
+
+    {{#params.hosts}}
+    {{name}} [width=0.5 shape=rect label="{{name}}\n{{ip}}\n{{mac}}" fontsize="11" fontname="courier" style="filled" fillcolor=3]
+    {{/params.hosts}}
+
+
+    }
+
+    {{#params.hosts}}
+        hub -- {{name}}
+    {{/params.hosts}}
+
+    }
+    </pl-graph>
+
+
+<p>Suppose a frame arrives on the Ethernet segment with the following Ethernet header (values given in hex digits):</p>
+
+<table class="table-arial-with-border" width="100%">
+    <thead>
+        <tr>
+            <th>Destination address (6 bytes)</th>
+            <th>Source address (6 bytes)</th>
+            <th>Frame type (2 bytes)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><tt>{{params.dstaddr}}</tt></td>
+            <td><tt>{{params.srcaddr}}</tt></td>
+            <td><tt>{{params.type}}</tt></td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+</pl-question-panel>
+
+<p>Indicate the action that each NIC will take with this frame:</p>
+<table class="table-arial" width="100%">
+    <tbody>
+    {{#params.opts}}
+        <tr>
+            <td><tt>{{host}}</tt></td>
+            <td>    
+            <pl-multiple-choice answers-name="{{host}}-cb" fixed-order="true" hide-letter-keys="true" inline="true" >
+                <pl-answer correct="{{pass}}"> Process and pass up the stack</pl-answer>
+                <pl-answer correct="{{ignore}}"> Ignore</pl-answer>
+            </pl-multiple-choice>
+            </td>
+        </tr>
+    {{/params.opts}}
+    </tbody>
+</table>
