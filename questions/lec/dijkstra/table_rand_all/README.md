@@ -1,0 +1,1 @@
+This question is a randomized version of Chapter 5, Question P3 in Kurose & Ross "Computer Networking: A Top-Down Approach" (8th edition). Each time you start a new variant, new random link costs are generated.
