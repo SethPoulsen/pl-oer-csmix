@@ -1,0 +1,11 @@
+{
+    "uuid": "82520d56-b67d-44a0-8d0a-019702b52330",
+    "title": "MIPS Datapath data movement instructions",
+    "type": "v3",
+    "topic": "Control/Datapath",
+    "tags": [
+        "processor",
+        "datapath",
+        "glherman"
+    ]
+}
