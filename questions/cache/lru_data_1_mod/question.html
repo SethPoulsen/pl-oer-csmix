@@ -1,0 +1,90 @@
+<pl-question-panel>
+  <p>
+    On the left is a 32B data memory. On the right are two tables, both representing the same {{params.ways}}-way set associative, {{params.cache_size}}B cache with {{params.cache_sets}} sets of blocks and 2B per block. The top table shows the initial state of the cache before a series of memory loads. The right-most column shows the current state of the LRU FSMs, which keep track of the order in which each way was accessed for each set index. The number furthest to the left is the least-recently used way and the number furthest to the right is the most-recently used way. For example, in [1,0], 1 was least-recently used and 0 was most recently used, meaning that way 1 would be replaced if the next access to its set was a miss.
+</p>
+<p>
+    Fill in the bottom table to show the final state of the cache after the series of loads completes. Fill what tags (in hexadecimal) and data (in decimal) are stored in each cache block and indicate the final state of the LSU FSMs. The placeholder text shows the initial state of the cache to facilitate answering.
+  </p>
+
+</pl-question-panel>
+
+
+  <div class="container">
+  <div class="row">
+<pl-question-panel>
+    <div class="col-sm-2">
+      <p style="text-align: center;"><b>Data Memory</b></p>
+      <table class="table-striped mem-table" border = "1">
+        {{{params.mem_table}}}
+      </table>
+    </div>
+</pl-question-panel>
+    <div class="col-sm-10">
+<pl-question-panel>
+      <p style="text-align: center;"><b>Start: {{params.ways}}-way set associative, {{params.cache_size}}B cache, with 2B blocks</b></p>
+      <table class="table-striped cache-entry" border = "1">
+{{{params.start_table}}}
+      </tbody>  
+      </table>
+  <p></p>
+  <p>Suppose a program accesses the following series of addresses, where the top-most question address is accessed first. Indicate whether each access is a hit or miss. </p>
+</pl-question-panel>
+<table class="table table-striped table-bordered table-condensed cache-entry">
+<thead>
+<tr>
+<th>Address</th>
+<th>Hit/Miss</th>
+</tr>
+</thead>
+<tbody>
+{{{params.address_table}}}
+</tbody>
+</table>
+<p></p>
+      <p style="text-align: center;"><b>End: {{params.ways}}-way set associative, {{params.cache_size}}B cache, with 2B blocks</b></p>
+      <table class="table-striped cache-entry" border = "1">
+{{{params.input_table}}}
+      </table>
+      <p></p>
+      <p></p>
+      <pl-question-panel>
+        <pl-hex-calculator></pl-hex-calculator>
+      </pl-question-panel>
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<pl-answer-panel>
+<h4>Example Solution Video</h4>
+<p><iframe id="kmsembed-1_kc26qlj1" style="width:25vh" src="https://mediaspace.illinois.edu/embed/secure/iframe/entryId/1_kc26qlj1/uiConfId/26883701/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+</p>
+</pl-answer-panel>
+
+<style>
+  .mem-table {
+    text-align: center;
+    margin-bottom: 1rem;
+    margin: 0 auto
+  }
+  .cache-entry {
+    text-align: center;
+    margin-bottom: 1rem;
+    margin: 0 auto
+  }
+  .cache-entry tr {
+    height: 35px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px;
+  }
+  .cache-entry th, .cache-entry td {
+    text-align: center;
+    vertical-align:middle;
+    padding: 0px 0px 0px 0px;
+    margin: 0px;
+  }
+  .pl-string-embed-input::placeholder {
+    color: red;
+    opacity: .75;
+  }
+</style>

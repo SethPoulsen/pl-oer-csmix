@@ -1,0 +1,9 @@
+{
+    "uuid": "ef55c562-aa58-40ae-b07b-1a947c1d1038",
+    "title": "2-way set associative cache (1 access)",
+    "type": "v3",
+    "topic": "Cache",
+    "tags": [
+        "glherman"
+    ]
+}
