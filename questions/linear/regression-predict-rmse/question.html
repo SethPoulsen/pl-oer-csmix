@@ -1,0 +1,57 @@
+<pl-question-panel>
+<markdown>
+
+Consider the following **test data**.
+For simplicity, we provide the feature variables $x_1$ and $x_2$ as a one-dimensional arrays `x1` and `x2`.
+
+<pl-code language="python">
+import numpy as np
+{{params.x1_code}}
+{{params.x2_code}}
+{{params.y_code}}
+</pl-code>
+
+***
+
+Consider a **linear model** fit to training data of the form:
+
+$$
+\mu(x) = \beta_0 + \beta_1 x_1 + \beta_2 x_2
+$$
+
+The *estimated* **coefficients** of this model are:
+
+- $\hat{\beta}_0 = {{params.b0_hat}}$
+- $\hat{\beta}_1 = {{params.b1_hat}}$
+- $\hat{\beta}_2 = {{params.b2_hat}}$
+
+*Calculate* the **test RMSE** for this model.
+
+***
+
+</markdown>
+</pl-question-panel>
+
+<p><pl-number-input answers-name="test_rmse" label="Test RMSE = "></pl-number-input></p>
+
+<pl-answer-panel>
+<hr>
+{{#feedback.show_full_answer}}
+<pl-code language="python">
+import numpy as np
+{{params.x1_code}}
+{{params.x2_code}}
+{{params.y_code}}
+</pl-code>
+<pl-code language="python">
+{{params.rmse_code}}
+</pl-code>
+<pl-code language="python">
+y_pred = b0_hat + b1_hat * x1 + b2_hat * x2
+test_rmse = rmse(y, y_pred)
+</pl-code>
+<hr>
+{{/feedback.show_full_answer}}
+
+</markdown>
+</pl-answer-panel>
