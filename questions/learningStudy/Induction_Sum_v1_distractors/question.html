@@ -1,0 +1,32 @@
+<pl-question-panel>
+    <p>Drag and drop <strong style="color:red;">all</strong> of the blocks below to create a proof by induction of the following statement.
+      </p>
+    <p style="color:red;">
+        $$\forall n \in \mathbb{N}, \sum_{j=0}^n \frac{1}{j(j+1)} = \frac{n}{n+1}.$$
+    </p></pl-question-panel>
+
+
+<pl-order-blocks solution-placement="bottom" answers-name="divides" source-blocks-order="ordered" indentation="false" grading-method="dag"
+  feedback="first-wrong-verbose"
+  >
+  <pl-answer correct="true" tag="1" depends="">Proof by induction on $n$.</pl-answer>
+  <pl-answer correct="true" tag="2" depends="1">Inductive Predicate: $P(n):$  $ \sum_{j=0}^n \frac{1}{j(j+1)} = \frac{n}{n+1}$ .</pl-answer>
+  <pl-answer correct="true" tag="3" depends="2">Base case: We need to show $P(1)$. At $n=1$, $\sum_{j=0}^n \frac{1}{j(j+1)} = \frac{1}{1(1+1)} = \frac{1}{2}$. Also $\frac{n}{n+1} = \frac{1}{2}$. So the two sides of the equation are equal and $P(1)$ holds.</pl-answer>
+  <pl-answer correct="true" tag="4" depends="2">Inductive Hypothesis: Suppose that $P(n):$ $ \sum_{j=0}^n \frac{1}{j(j+1)} = \frac{n}{n+1}$ holds for $n=1,2,...,k$ for some integer $k \geq 1$.</pl-answer>
+  <pl-answer correct="true" tag="5" depends="4">Inductive Step: we need to show that $P(k+1):$ $ \sum_{j=0}^{k+1} \frac{1}{j(j+1)} = \frac{k+1}{k+2}$ is true .</pl-answer>
+  <pl-answer correct="true" tag="6" depends="5">Consider $\sum_{j=0}^{k+1} \frac{1}{j(j+1)}$. </pl-answer>
+  <pl-answer correct="true" tag="7" depends="6">By the inductive hypothesis $ \sum_{j=0}^k \frac{1}{j(j+1)} = \frac{k}{k+1}$, so removing the top term of our summation and then applying this we get $\sum_{j=0}^{k+1} \frac{1}{j(j+1)} = \frac{1}{(k+1)(k+2)} + \sum_{j=0}^{k} \frac{1}{j(j+1)} = \frac{1}{(k+1)(k+2)} + \frac{k}{k+1}$</pl-answer>
+  <pl-answer correct="true" tag="8" depends="7">Adding the two fractions together: $\frac{1}{(k+1)(k+2)} + \frac{k}{k+1} = \frac{1 + k(k+2)}{(k+1)(k+2)} = \frac{k^2 + 2k + 1}{(k+1)(k+2)} = \frac{(k+1)^2}{(k+1)(k+2)} = \frac{k+1}{k+2}$</pl-answer>
+  <pl-answer correct="true" tag="9" depends="8">So $\sum_{j=0}^{k+1} \frac{1}{j(j+1)} = \frac{k+1}{k+2}$, which is what we needed to show.</pl-answer>
+
+  <!-- Distractors -->
+  <pl-answer correct="false" distractor-for="7" distractor-feedback='The first equality mentioned here is not the inductive hypothesis, it is simply expanding the sum using the definition of summation notation. The correctness of the proof relies on using the hypothesis for the calculations to work out.'>
+    By the inductive hypothesis, $\sum_{j=0}^{k+1} \frac{1}{j(j+1)} = \frac{1}{(k+1)(k+2)} + \sum_{j=0}^{k} \frac{1}{j(j+1)}$, so removing the top term of our summation and then applying this we get $\sum_{j=0}^{k+1} \frac{1}{j(j+1)} = \frac{1}{(k+1)(k+2)} + \sum_{j=0}^{k} \frac{1}{j(j+1)} = \frac{1}{(k+1)(k+2)} + \frac{k}{k+1}$</pl-answer>
+  <pl-answer correct="false" distractor-for="5" distractor-feedback="You already assumed the statement true for $k$. Because your inductive hypothesis already assumes that the statement is true for $k$, in the inductive step you need to show that it is true for the next value, which in this case is $k+1$. If the inductive hypothesis would have assumed the statement true up to $k-1$, this line would be correct.">
+    Inductive Step: we need to show that $P(k):$ $ \sum_{j=0}^{k} \frac{1}{j(j+1)} = \frac{k}{k+1}$ is true.</pl-answer>
+  <pl-answer correct="false" distractor-for="3" distractor-feedback="In order to show that the base case is correct, you need to evaluate both the LHS $\left(\sum_{j=0}^n \frac{1}{j(j+1)}\right)$ and RHS $\left(\frac{n}{n+1}\right)$ and make sure they are the same.">
+    Base case: We need to show $P(1)$. At $n=1$, $\sum_{j=0}^n \frac{1}{j(j+1)} = \frac{1}{1(1+1)} = \frac{1}{2}$. So $P(1)$ holds.</pl-answer>
+  <pl-answer correct="false" distractor-for="4" distractor-feedback="You gave no bound for the hypothesis.  We cannot assume that the statement is true for all $n$, this is what we are trying to prove.  We need to assume it is true for $n=1,...,k$ and then show it true for $n=k+1$.">
+    Inductive Hypothesis: Suppose that $P(n):$ $ \sum_{j=0}^n \frac{1}{j(j+1)} = \frac{n}{n+1}$ holds. </pl-answer>
+
+</pl-order-blocks>
