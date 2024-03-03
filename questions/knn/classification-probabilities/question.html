@@ -1,0 +1,24 @@
+<pl-question-panel>
+<markdown>
+
+Consider the following **data**.
+
+{{{params.df_html}}}
+
+***
+
+Suppose we had fit **KNN** with $k=5$ to this data. *Estimate* the two relevant **conditional probabilities** when $x = {{params.x_new}}$.
+
+- $P[Y = 0 \mid X = {{params.x_new}}]$
+- $P[Y = 1 \mid X = {{params.x_new}}]$
+
+***
+
+</markdown>
+</pl-question-panel>
+
+<p><pl-number-input answers-name="p0" label="$\hat{P}[Y = 0 \mid X = {{params.x_new}}] = $"></pl-number-input></p>
+<p><pl-number-input answers-name="p1" label="$\hat{P}[Y = 1 \mid X = {{params.x_new}}] = $"></pl-number-input></p>
+
+<pl-answer-panel>
+</pl-answer-panel>
