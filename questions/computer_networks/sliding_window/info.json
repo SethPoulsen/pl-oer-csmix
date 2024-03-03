@@ -1,11 +1,11 @@
 {
     "uuid": "1f1e5d05-a119-4af7-aafd-576d3014dc25",
     "title": "Sliding window flow control",
-    "topic": "TCP",
+    "topic": "Computer Networks",
     "tags": [
-        "lecture",
+        "TCP",
         "drawing",
-        "ffund"
+        "author:ffund@nyu.edu"
     ],
     "type": "v3"
 }

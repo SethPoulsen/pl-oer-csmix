@@ -1,12 +1,11 @@
 {
     "uuid": "a2ff25c8-afcc-4a1c-96fe-d675fe9c7c8b",
     "title": "Subnet assignments ",
-    "topic": "Static routing",
+    "topic": "Computer Networks",
     "tags": [
+        "Static routing",
         "short answer",
-        "lab",
-        "ffund",
-        "fa23"
+        "author:ffund@nyu.edu"
     ],
     "type": "v3"
 }

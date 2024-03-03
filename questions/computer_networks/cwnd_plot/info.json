@@ -1,10 +1,11 @@
 {
     "uuid": "424f3643-5956-4cce-aba5-ff24c99c7e96",
     "title": "CWND in slow start and congestion avoidance",
-    "topic": "TCP",
+    "topic": "Computer Networks",
     "tags": [
-        "lecture",
-        "multiple choice"
+        "TCP",
+        "multiple choice",
+        "author:ffund@nyu.edu"
     ],
     "type": "v3"
 }

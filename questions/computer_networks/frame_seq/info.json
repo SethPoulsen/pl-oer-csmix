@@ -1,10 +1,11 @@
 {
     "uuid": "1046f014-ddbf-4d99-a334-8ac128fb08ec",
     "title": "Frames arriving at a bridge",
-    "topic": "ARP, bridges, and spanning tree",
+    "topic": "Computer Networks",
     "tags": [
-        "lab",
-        "checkbox"
+        "ARP, bridges, and spanning tree",
+        "checkbox",
+        "author:ffund@nyu.edu"
     ],
     "type": "v3"
 }
