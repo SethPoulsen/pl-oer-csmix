@@ -1,0 +1,43 @@
+<pl-question-panel> 
+<markdown>
+
+Consider the following logistic regression model with known values of the parameters.
+
+$$
+\log\left(\frac{p(\boldsymbol{x})}{1 - p(\boldsymbol{x})}\right) = {{params.beta_0}} + {{params.beta_1}} x_1 + {{params.beta_2}} x_2
+$$
+
+$$
+p(\boldsymbol{x}) = P\left[ Y = 1 \mid \boldsymbol{X} = \boldsymbol{x} \right] = P\left[ Y = 1 \mid X_1 = x_1, X_2 = x_2 \right]
+$$
+
+***
+
+Use this model to do the following:
+
+- **(a)** *Calculate* $P\left[ Y = 1 \mid \boldsymbol{X} = \boldsymbol{x} \right]$ when $x_1 = {{params.x1a}}$ and $x_2 = {{params.x2a}}$.
+- **(b)** *Calculate* $P\left[ Y = 1 \mid \boldsymbol{X} = \boldsymbol{x} \right]$ when $x_1 = {{params.x1b}}$ and $x_2 = {{params.x2b}}$.
+- **(c)** *Calculate* $P\left[ Y = 0 \mid \boldsymbol{X} = \boldsymbol{x} \right]$ when $x_1 = {{params.x1c}}$ and $x_2 = {{params.x2c}}$.
+- **(d)** *Calculate* $P\left[ Y = 0 \mid \boldsymbol{X} = \boldsymbol{x} \right]$ when $x_1 = {{params.x1d}}$ and $x_2 = {{params.x2d}}$.
+
+***
+
+</markdown>
+</pl-question-panel>
+
+<p><pl-number-input answers-name="a" label="(a)" rtol="1e-4"></pl-number-input></p>
+<p><pl-number-input answers-name="b" label="(b)" rtol="1e-4"></pl-number-input></p>
+<p><pl-number-input answers-name="c" label="(c)" rtol="1e-4"></pl-number-input></p>
+<p><pl-number-input answers-name="d" label="(d)" rtol="1e-4"></pl-number-input></p>
+
+<pl-answer-panel>
+<markdown>
+***
+
+Two functions from `scipy` could be useful here:
+
+- `scipy.special.logit` is the logit function.
+- `scipy.special.expit` is the sigmoid function.
+
+</markdown>
+</pl-answer-panel>
