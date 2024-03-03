@@ -1,0 +1,45 @@
+<pl-question-panel>
+<markdown>
+
+A decision tree was fit to a dataset.
+
+- The **target** data, `y`, is *categorical* with shape `(100, 1)`
+    - Possible values are `0`, `1`, and `2`.
+- The **feature** data, `X`, is numeric with shape `(100, 3)`
+
+The resulting tree is summarized by the image below.
+
+***
+
+<img src="{{options.client_files_question_dynamic_url}}/fig.png" />
+
+***
+
+Given a new sample:
+
+- `{{params.X_new}}`
+
+*Estimate* the following three **probabilities**:
+
+- $p_0(x) = P(Y = 0 \mid X = x)$
+- $p_1(x) = P(Y = 1 \mid X = x)$
+- $p_2(x) = P(Y = 2 \mid X = x)$
+
+***
+
+</markdown>
+</pl-question-panel>
+
+<p><pl-number-input answers-name="p0" label="$\hat{p}_0\left( \texttt{ {{params.X_new}} } \right) = $"></pl-number-input></p>
+<p><pl-number-input answers-name="p1" label="$\hat{p}_1\left( \texttt{ {{params.X_new}} } \right) = $"></pl-number-input></p>
+<p><pl-number-input answers-name="p2" label="$\hat{p}_2\left( \texttt{ {{params.X_new}} } \right) = $"></pl-number-input></p>
+
+<pl-answer-panel>
+<markdown>
+
+***
+
+Recall that `x[0]` refers to the first feature, `x[1]` refers to the second feature, etc.
+
+</markdown>
+</pl-answer-panel>
