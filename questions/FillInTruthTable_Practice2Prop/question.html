@@ -1,0 +1,46 @@
+<pl-question-panel>
+<p>
+    Fill in the truth table below.
+</p>
+<p>
+    <table align="center" style="width:100%; table-layout:fixed;" border="1" >
+        <tr>
+          <td align="center"><b>$$P$$</b></td>
+          <td align="center"><b>$$Q$$</b></td>
+          <td align="center"><b>{{params.expression}}</b></td>
+        </tr>
+        <tr>
+          <td align="center">T</td>
+          <td align="center">T</td>
+          <td align="center"><pl-dropdown answers-name="TT" sort="descend">
+                                <pl-answer correct="true">{{params.TTright}}</pl-answer>
+                                <pl-answer correct="false">{{params.TTwrong}}</pl-answer>
+                            </pl-dropdown></td>
+        </tr>
+        <tr>
+          <td align="center">T</td>
+          <td align="center">F</td>
+          <td align="center"><pl-dropdown answers-name="TF" sort="descend">
+                                <pl-answer correct="true">{{params.TFright}}</pl-answer>
+                                <pl-answer correct="false">{{params.TFwrong}}</pl-answer>
+                            </pl-dropdown></td>
+        </tr>
+        <tr>
+          <td align="center">F</td>
+          <td align="center">T</td>
+          <td align="center"><pl-dropdown answers-name="FT" sort="descend">
+                                <pl-answer correct="true">{{params.FTright}}</pl-answer>
+                                <pl-answer correct="false">{{params.FTwrong}}</pl-answer>
+                            </pl-dropdown></td>
+        </tr>
+        <tr>
+          <td align="center">F</td>
+          <td align="center">F</td>
+          <td align="center"><pl-dropdown answers-name="FF" sort="descend">
+                                <pl-answer correct="true">{{params.FFright}}</pl-answer>
+                                <pl-answer correct="false">{{params.FFwrong}}</pl-answer>
+                            </pl-dropdown></td>
+        </tr>
+    </table>
+</p>
+</pl-question-panel>
