@@ -1,0 +1,20 @@
+<pl-question-panel>
+    <p>
+        Write a Boolean expression for the circuit below.
+    </p>
+
+    <pl-figure file-name="figure.png" type="dynamic"></pl-figure>
+
+    <p><i>Your answer should use only the following symbols: xyz+*'()</i></p>
+</pl-question-panel>
+    <pl-string-input answers-name="expression" label="f(x,y,z)="></pl-string-input>
+
+<pl-answer-panel>
+    <p><b>{{feedback.msg}}</b></p>
+
+    <p>
+        One solution is: <b>{{correct_answers.expression}}</b>. (Many equivalent solutions are possible.)
+    </p>
+
+    <p>Want to watch a <a href="https://www.youtube.com/watch?v={{params.video_hash}}" target="_blank">video demonstrating how to solve this kind of problem</a>?</p>
+</pl-answer-panel>
