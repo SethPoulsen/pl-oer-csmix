@@ -1,0 +1,65 @@
+<pl-question-panel>
+<markdown>
+
+Consider a random variable $X$ that follows a **normal distribution** with mean {{params.mean}} and standard deviation {{params.sd}}.
+
+$$
+X \sim N(\mu = {{params.mean}}, \sigma = {{params.sd}})
+$$
+
+***
+
+*Calculate* the following three **probabilities**:
+
+$$
+P(X < {{params.lt}})
+$$
+
+$$
+P(X \geq {{params.rt}})
+$$
+
+$$
+P({{params.a}} \leq X < {{params.b}})
+$$
+
+***
+
+</markdown>
+</pl-question-panel>
+
+
+<p><pl-number-input answers-name="p1" label="$P(X < {{params.lt}}) = $"></pl-number-input></p>
+<p><pl-number-input answers-name="p2" label="$P(X > {{params.rt}}) = $"></pl-number-input></p>
+<p><pl-number-input answers-name="p3" label="$P({{params.a}} < X < {{params.b}}) = $"></pl-number-input></p>
+
+
+<pl-answer-panel>
+<markdown>
+
+{{#feedback.show_full_answer}}
+<hr>
+
+<pl-code language="python">
+import scipy.stats as stats
+n_rv = stats.norm(loc={{params.mean}}, scale={{params.sd}})
+print(n_rv.cdf({{params.lt}}))
+print(1 - n_rv.cdf({{params.rt}}))
+print(n_rv.cdf({{params.b}}) - n_rv.cdf({{params.a}}))
+</pl-code>
+
+{{/feedback.show_full_answer}}
+
+***
+
+Recall that the **cumulative distribution function** for a random variable $X$, $F_X(x)$ is given by
+
+$$
+P(X \leq x)
+$$
+
+To complete this exercise, consider using the [`scipy.stats` module](https://docs.scipy.org/doc/scipy/reference/stats.html) which provides tools
+for probability distributions. For this problem, the `norm` class and its `.cdf` method will be useful.
+
+</markdown>
+</pl-answer-panel>
