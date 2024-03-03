@@ -1,0 +1,13 @@
+<pl-question-panel>
+  Drag and drop ALL of the following blocks to prove the statement:
+  <p><center>If $n$ is an even integer, then $n + 10$ is also an even integer.</center></p>
+</pl-question-panel>
+
+<pl-order-blocks  feedback="first-wrong" answers-name="even-implies-even" source-blocks-order="random" grading-method="dag">
+  <pl-answer correct="true" tag="1" depends="">Let $n$ be an arbitrary even integer.</pl-answer>
+  <pl-answer correct="true" tag="2" depends="1">By the definition of even, there exists some integer $m$ such that $n = 2m$.</pl-answer>
+  <pl-answer correct="true" tag="3" depends="2">Then we know that $n + 10 = 2m + 10 = 2(m + 5)$</pl-answer>
+  <pl-answer correct="true" tag="4" depends="2">Since $m$ is an integer, $m+5$ is an integer.</pl-answer>
+  <pl-answer correct="true" tag="5" depends="3,4">Since $n + 10$ can be rewritten as $2$ times some integer, it is an even number.</pl-answer>
+
+</pl-order-blocks>
