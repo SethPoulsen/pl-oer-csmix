@@ -1,0 +1,36 @@
+<pl-question-panel>
+  <p>A TCP endpoint receives the following data segment:</p>
+
+<pl-code language="text">{{params.server}}.{{params.sport}} > {{params.client}}.{{params.cport}}: Flags [P.], 
+        seq {{params.sn1}}, ack {{params.sn2}}, win 502, length {{params.l1}}</pl-code>
+
+<p>and sends this ACK in response:</p>
+
+<pl-code language="text">{{params.client}}.{{params.cport}} > {{params.server}}.{{params.sport}}: Flags [.], 
+        ack {{params.ack1}}, win 502, length 0</pl-code>
+
+<p>The next segment it receives is the following:</p>
+
+<pl-code language="text">{{params.server}}.{{params.sport}} > {{params.client}}.{{params.cport}}: Flags [P.], 
+        seq {{params.seq2}}, ack {{params.sn2}}, win 502, length {{params.l2}}</pl-code>
+
+</pl-question-panel>
+
+
+<p>What will be the ACK number it sends in response?</p>
+
+<pl-integer-input answers-name="ack"></pl-integer-input>
+
+
+<pl-answer-panel>
+<br><hr><p><span class="badge badge-primary">Comment</span> 
+{{#params.missed}} This TCP endpoint expected the next sequence number from the other host to be {{params.ack1}}, but it received {{params.seq2}} instead, indicating a missed or out-of-order packet.</p>
+<p>Since an ACK acknowledges <i>contiguous</i> bytes, and it has still only received contiguous bytes up to {{params.ack1}}, it will send back an ACK with ACK number {{correct_answers.ack}}.</p>
+<p>(It may use the SACK option to selectively acknowledge the segment it just received, though!)</p>
+{{/params.missed}}
+{{^params.missed}}
+This TCP endpoint has now received contiguous bytes up to {{params.ack1}}+{{params.l2}}, so it will send back an ACK with ACK number {{correct_answers.ack}}.</p>
+{{/params.missed}}
+</pl-answer-panel>
+
+
