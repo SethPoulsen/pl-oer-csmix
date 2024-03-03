@@ -1,0 +1,20 @@
+<pl-question-panel>
+    <p>Let $S$ be any set of 100 integers. Drag and drop a subset of the blocks below to create a proof of the following statement. <strong><font color="blue">Note, not all blocks are needed in the proof.</font></strong></p>
+    <p><center><font color="red">There is a subset $A \subseteq S$ of size at least 6 such that the difference of any pair of numbers in $A$ is a multiple of 17.</font></center></p>
+    <p>The proof will use the generalized pigeon hole principle, which says that if there are $> kn$ pigeons and $n$ holes then some hole will have $\geq k+1$ pigeons.</p>
+</pl-question-panel>
+
+<pl-order-blocks solution-placement="bottom" feedback="first-wrong" answers-name="php-v1" source-blocks-order="random" grading-method="dag">
+  <pl-answer correct="true" tag="1" depends="">Consider $f:S \to \{0,1,\ldots 16\}$ such that $f(a) = \mathsf{rem}(a,17)$.</pl-answer>
+  <pl-answer correct="true" tag="2" depends="1">Since $100 = |S| > 5\times |\{0,1,\ldots 16\}|$, there is $A \subseteq S$ such that $|A| \geq 6$ and for all $a,b \in A$, $f(a) = f(b)$.</pl-answer>
+  <pl-answer correct="true" tag="3" depends="2">For every $a,b \in A$, $17 | (a-b)$ because $f(a) = \mathsf{rem}(a,17) = \mathsf{rem}(b,17) = f(b)$.</pl-answer>
+  <pl-answer correct="true" tag="4" depends="3">$A$ is our desired set establishing the statement. (End of Proof)</pl-answer>
+
+  <!-- Distractors -->
+
+  <pl-answer correct="false" tag="" depends="">Consider $f: S \times S \to \{0,1\}$ such that $f((a,b)) = 0$ if $17 | (a-b)$ and $f((a,b))=1$ if $17 \nmid (a-b)$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="">Since $100^2 = |S \times S| > 5\times |\{0,1\}|$, there is $A \subseteq S \times S$ such that $|A| \geq 6$ and for all $(a,b) \in A$, $f((a,b)) = 0$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="">Consider $f: S \to \{0,1\}$ such that $f(a) = 0$ if $17 | a$ and $f(a) = 1$ if $17 \nmid a$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="">Since $100 = |S| > 5\times |\{0,1\}|$, there is $A \subseteq S$ such that $|A| \geq 6$ and for all $a \in A$, $f(a) = 0$.</pl-answer>
+
+</pl-order-blocks>
