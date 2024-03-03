@@ -1,0 +1,1 @@
+This question is based on Chapter 8 in Kurose & Ross "Computer Networking: A Top-Down Approach" (8th edition). There are four variants of this question, with different use of keys in each of the four.
