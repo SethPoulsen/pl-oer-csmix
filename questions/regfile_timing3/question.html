@@ -1,0 +1,89 @@
+<script>$(() => WaveDrom.ProcessAll());</script>
+<pl-question-panel>
+
+
+<p>A 4x4 register file has 4, 4-bit registers. The timing diagram below displays the values of the inputs to the register file. The register file has an asynchronous reset signal. Determine how the state of the registers change each clock period.</p>
+
+<p>Enter answers as a single hex digit without the 0x prefix (e.g., just 5 or A, not 0x5 or 0xA).</p>
+
+<p>The register file begins with the following inital values</p>
+<table class="table table-striped table-bordered table-condensed" style="width:50%;  margin: 0 auto">
+  <thead>
+  <tr>
+  <th style="width: 25%; text-align: center;">R[0]</th>
+  <th style="width: 25%; text-align: center;">R[1]</th>
+  <th style="width: 25%; text-align: center;">R[2]</th>
+  <th style="width: 25%; text-align: center;">R[3]</th>
+  </tr>
+  </thead>
+  <tr>
+  <td style="width: 25%; text-align: center;">{{params.reg0}}</td>
+  <td style="width: 25%; text-align: center;">{{params.reg1}}</td>
+  <td style="width: 25%; text-align: center;">{{params.reg2}}</td>
+  <td style="width: 25%; text-align: center;">{{params.reg3}}</td>
+  </tr>
+</table>
+</pl-question-panel>
+
+<pl-overlay width="750" height="425" clip="false">
+    <pl-background>
+<script type="WaveDrom">
+{{{params.waveform}}}
+</script>
+    </pl-background>
+    <!--cycle0-->
+    <pl-location left="120" top="275">
+        <pl-string-embed answers-name="regA_0" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="120" top="335">
+        <pl-string-embed answers-name="regB_0" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="200" top="275">
+        <pl-string-embed answers-name="regA_1" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="200" top="335">
+        <pl-string-embed answers-name="regB_1" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="280" top="275">
+        <pl-string-embed answers-name="regA_2" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="280" top="335">
+        <pl-string-embed answers-name="regB_2" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="360" top="275">
+        <pl-string-embed answers-name="regA_3" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="360" top="335">
+        <pl-string-embed answers-name="regB_3" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="440" top="275">
+        <pl-string-embed answers-name="regA_4" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="440" top="335">
+        <pl-string-embed answers-name="regB_4" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="520" top="275">
+        <pl-string-embed answers-name="regA_5" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="520" top="335">
+        <pl-string-embed answers-name="regB_5" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="600" top="275">
+        <pl-string-embed answers-name="regA_6" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="600" top="335">
+        <pl-string-embed answers-name="regB_6" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="680" top="275">
+        <pl-string-embed answers-name="regA_7" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+    <pl-location left="680" top="335">
+        <pl-string-embed answers-name="regB_7" show-help-text="false" remove-leading-trailing="true" ignore-case="true" size="70" weight="1" placeholder="?"></pl-string-embed>
+    </pl-location>
+</pl-overlay>
+
+
+<pl-answer-panel>
+    <h2>Example</h2>
+    <p><a href="https://mediaspace.illinois.edu/media/t/1_cqxtzu6d">Example Solution Video</a></p>
+</pl-answer-panel>
