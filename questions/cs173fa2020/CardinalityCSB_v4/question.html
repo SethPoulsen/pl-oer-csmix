@@ -1,0 +1,25 @@
+<pl-question-panel>
+    <p>Recall that the interval $(0,1) = \{r \in \mathbb{R}\: |\: 0 < r < 1\}$ and $[0,1] = \{r \in \mathbb{R}\: |\: 0 \leq r \leq 1\}$. Drag and drop a subset of the blocks below to create a proof of the following statement. <strong><font color="blue">Note, not all blocks are needed in the proof.</font></strong></p>
+    <p><center><font color="red">$|(0,1)| = |[0,1]|$</font></center></p>
+    <p>We will prove this result by showing $|(0,1)| \leq |[0,1]|$ and $|[0,1]| \leq |(0,1)|$ and using the Cantor-Schroeder-Bernstein theorem.</p>
+</pl-question-panel>
+
+<pl-order-blocks solution-placement="right" feedback="first-wrong" answers-name="csb-v1" source-blocks-order="random" grading-method="dag">
+  <pl-answer correct="true" tag="1" depends="">Consider the function $id: (0,1) \to [0,1]$ where for any $r \in (0,1)$, $id(r) = r$.</pl-answer>
+  <pl-answer correct="true" tag="2" depends="1">$id$ is injective because if $id(r) = r = s = id(s)$ then $r=s$.</pl-answer>
+  <pl-answer correct="true" tag="3" depends="2">Since $id$ is injective, $|(0,1)| \leq |[0,1]|$.</pl-answer>
+  <pl-answer correct="true" tag="4" depends="">Consider the function $f: [0,1] \to (0,1)$ where for any $r \in [0,1]$, $f(r) = \frac{r+1}{4}$.</pl-answer>
+  <pl-answer correct="true" tag="5" depends="4">$f$ is injective because if $f(r) = \frac{r+1}{4} = \frac{s+1}{4} = f(s)$ then $r=s$.</pl-answer>
+  <pl-answer correct="true" tag="6" depends="5">Since $f$ is injective, $|[0,1]| \leq |(0,1)|$.</pl-answer>
+  <pl-answer correct="true" tag="7" depends="3,6" >Result follows from the Cantor-Schroeder-Bernstein theorem. (End of Proof)</pl-answer>
+
+  <!-- Distractors -->
+  <pl-answer correct="false" tag="" depends="" >$id$ is surjective because for any $r \in [0,1]$, $id(r) = r$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="" >Since $id$ is surjective, $|(0,1)| \leq |[0,1]|$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="" >$f$ is surjective because for any $r \in (0,1)$, $f(4r-1) = r$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="" >Since $f$ is surjective, $|[0,1]| \leq |(0,1)|$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="" >Consider the function $f: [0,1] \to (0,1)$ where for any $r \in [0,1]$, $f(r) = r$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="" >$f$ is injective because if $f(r) = r = s = f(s)$ then $r=s$.</pl-answer>
+  <pl-answer correct="false" tag="" depends="" >$f$ is surjective because for any $r \in (0,1)$, $f(r) = r$.</pl-answer>
+
+</pl-order-blocks>
