@@ -1,0 +1,101 @@
+
+<link rel="stylesheet" href="{{ options.client_files_course_url }}/iap.css">
+
+<pl-question-panel>
+<!--<p>Consider the following network of hosts (orange) and routers (green). -->
+<p>Your challenge is to design subnets for three LANs, with the following design constraints:
+<ul>
+    <li>The available IP address space is the range <b>{{params.rangemin}}-{{params.rangemax}}</b>.</li>
+    <li>LAN A must be able to support at least <b>{{params.nhosts.0}}</b> hosts.</li>
+    <li>LAN B must be able to support at least <b>{{params.nhosts.1}}</b> hosts.</li>
+    <li>LAN C must be able to support at least <b>{{params.nhosts.2}}</b> hosts.</li>
+</ul>
+</p>
+
+<p>For each subnet, you should identify:
+
+<ul>
+<li>the subnet mask.</li>
+<li>the network address. This will be the bitwise AND of the IP address of any host on the network, and the subnet mask.</li>
+</ul>
+</p>
+
+<p>There may be more than one correct solution - any solution that satisfies the requirements above is acceptable! Once you have made your design decisions, complete the following table:</p>
+
+</pl-question-panel>
+
+
+<pl-answer-panel>
+    
+<p><span class="badge badge-primary">Comment</span> Any solution where:
+
+<ul>
+    <li>each subnet supports the required number of hosts,</li>
+    <li>each subnet is contained completely within the available IP address space,</li>
+    <li>the subnets are not overlapping,</li>
+    <li>and each subnet is in a "valid position" given its subnet mask (see visualization below),</li>
+</ul>
+is acceptable.</p>
+
+  <pl-figure file-name="explain.png" type="dynamic"></pl-figure>
+  
+  <br><hr><br>
+  <p>This is one example of a correct solution:</p>
+
+</pl-answer-panel>
+
+
+
+
+
+
+<p>
+<table  class="table-arial-no-border" width="100%">
+<thead>
+  <tr>
+    <th >LAN</th>
+    <th >Subnet Mask</th>
+    <th >Network Address</th>
+  </tr>
+</thead>
+<tbody>
+    <tr>
+     <td>LAN&nbsp;A &ge; {{params.nhosts.0}} </td>
+     <td><pl-string-input display="block" answers-name="lana-netmask" allow-blank="true"  ignore-case="true" correct_answer="{{params.mask.0}}" remove-spaces="true" show-help-text="false" size="14"></pl-string-input></td>
+     <td><pl-string-input display="block" weight="2" answers-name="lana-network" allow-blank="true"  ignore-case="true" correct_answer="{{params.netaddr.0}}" remove-spaces="true" show-help-text="false" size="14"></pl-string-input></td>
+ </tr>
+    <tr>
+     <td>LAN&nbsp;B &ge; {{params.nhosts.1}} </td>
+     <td><pl-string-input display="block" answers-name="lanb-netmask" allow-blank="true"  ignore-case="true" correct_answer="{{params.mask.1}}" remove-spaces="true" show-help-text="false" size="14"></pl-string-input></td>
+     <td><pl-string-input display="block" weight="2" answers-name="lanb-network" allow-blank="true"  ignore-case="true" correct_answer="{{params.netaddr.1}}" remove-spaces="true" show-help-text="false" size="14"></pl-string-input></td>
+ </tr>
+    <tr>
+     <td>LAN&nbsp;C &ge; {{params.nhosts.2}} </td>
+     <td><pl-string-input display="block" answers-name="lanc-netmask" allow-blank="true"  ignore-case="true" correct_answer="{{params.mask.2}}" remove-spaces="true" show-help-text="false" size="14"></pl-string-input></td>
+     <td><pl-string-input display="block" weight="2" answers-name="lanc-network" allow-blank="true"  ignore-case="true" correct_answer="{{params.netaddr.2}}" remove-spaces="true" show-help-text="false" size="14"></pl-string-input></td>
+ </tr>
+
+</tbody>
+</table>
+</p>
+
+
+
+<pl-submission-panel>
+            {{#feedback.overall}}<div class = "alert alert-danger"><p>{{feedback.overall}} </p></div>  {{/feedback.overall}}
+
+    <!-- check if feedback is empty -->
+    <ul>
+            {{#feedback.lana-netmask}}<li><b>LAN A Subnet Mask</b>: {{feedback.lana-netmask}}</li> {{/feedback.lana-netmask}}
+            {{#feedback.lana-network}}<li><b>LAN A Network Address</b>: {{feedback.lana-network}}</li> {{/feedback.lana-network}}
+
+            {{#feedback.lanb-netmask}}<li><b>LAN B Subnet Mask</b>: {{feedback.lanb-netmask}}</li> {{/feedback.lanb-netmask}}
+            {{#feedback.lanb-network}}<li><b>LAN B Network Address</b>: {{feedback.lanb-network}}</li> {{/feedback.lanb-network}}
+
+            {{#feedback.lanc-netmask}}<li><b>LAN C Subnet Mask</b>: {{feedback.lanc-netmask}}</li> {{/feedback.lanc-netmask}}
+            {{#feedback.lanc-network}}<li><b>LAN C Network Address</b>: {{feedback.lanc-network}}</li> {{/feedback.lanc-network}}
+
+    </ul>
+
+</pl-submission-panel>
+
