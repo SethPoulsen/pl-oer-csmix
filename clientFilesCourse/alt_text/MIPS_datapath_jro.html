@@ -1,0 +1,67 @@
+<head>
+    <title>MIPS Datapath JRO Alt Text</title>
+</head>
+
+<body>
+    <p>
+        The inputs to the datapath are a clock signal and a reset signal.
+    </p>
+
+    <p>
+        The clock signal and reset signals are the inputs to the PC register, in addition to an enable (hardcoded to 1)
+        and an input nextPC (32 bits). The output is PC (32bits).
+    </p>
+
+    <p>
+        PC is input A of an ALU whose input B is the number 4, the control is ADD. Its output becomes input 0 to a mux4.
+        Input 1 of that mux is the output of another ALU. That ALU's input A is the output of the previous ALU and its
+        input B is the branch offset (32 bits). The control signal is add. Input 2 of this mux is the concatenation of
+        the 4 MSBs of PC+4, the 26 LSBs of inst, and two zeros as the LSBs. Input 3 of the mux is the output from the JRO mux.
+        The control for the mux4 is the signal control_type and its output is nextPC.
+    </p>
+
+    <p>
+        The 30 MSBs of PC are also the input addr to instruction memory, which outputs inst (32 bits).
+    </p>
+
+    <p>
+        The six MSBs and the 6 LSBs of inst are the opcode and funct inputs to the MIPS instruction decoder,
+        respectively. The decoder also takes the zero flag from another ALU. The outputs of the decoder are: alu_op (3
+        bits), write_enable, rd_src, alu_src2 (2 bits), control_type (2 bits), lui, slt, jro, and except.
+    </p>
+
+    <p>
+        Additionally, the 16 LSBs of the inst are also inputs to the sign extender, which outputs a 32 bit number. Its
+        output is the input to a left shift by 2 module, which outputs the 32-bit branch offset.
+    </p>
+
+    <p>
+        Additionally, the inst is also an input to the register file. Bits 21 through 25 (inclusive) is rs, which is the
+        input A_addr. Bits 16 through 20 (inclusive) is rt, which is the input B_addr. Bits 11 through 15 (inclusive)
+        are rd, and rd are rt are inputs 0 and 1 respectively to a mux that uses rd_src as the control bit. The output
+        of that mux is the input W_addr of the register. The register also takes the signals wr_enable, clock, and reset
+        as well as the input W_data, which is the output of the LUI mux, which selects between the output of the SLT mux
+        and the 16 LSBs of the inst (also known as the immediate). The outputs of the register file are A_data and
+        B_data, which are 32 bits.
+    </p>
+
+    <p>
+        B_data is the input 0 of a mux. Input 1 of that mux is the output of the sign extender and input 2 is the
+        immediate. The control bits for that mux is the 2-bit signal alu_src2.
+    </p>
+
+    <p>
+        The output of that mux is the B input of an ALU whose A input is A_data from the register. The ALU outputs the
+        overflow, zero, and negative flags, and a 32 bit number.
+    </p>
+
+    <p>
+        This output is the input 0 of the SLT mux. Input 1 of the SLT mux is 31'b0. Its output is the 0 input to the LUI
+        mux. The control bit for the SLT mux is slt.
+    </p>
+
+    <p>
+        Additionally, this output is also input 1 of the JRO mux. Input 0 of the JRO mux is A_data from the register. Its 
+        output is the 3 input to the mux4 that inputs into the PC regsiter. The control bit for the JRO mux is jro.
+    </p>
+</body>

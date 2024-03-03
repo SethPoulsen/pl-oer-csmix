@@ -1,0 +1,86 @@
+<head>
+    <title>MIPS Datapath Full Alt Text</title>
+</head>
+
+<body>
+    <p>
+        The inputs to the datapath are a clock signal and a reset signal.
+    </p>
+
+    <p>
+        The clock signal and reset signals are the inputs to the PC register, in addition to an enable (hardcoded to 1)
+        and an input nextPC (32 bits). The output is PC (32bits).
+    </p>
+
+    <p>
+        PC is input A of an ALU whose input B is the number 4, the control is ADD. Its output becomes input 0 to a mux4.
+        Input 1 of that mux is the output of another ALU. That ALU's input A is the output of the previous ALU and its
+        input B is the branch offset (32 bits). The control signal is add. Input 2 of this mux is the concatenation of
+        the 4 MSBs of PC+4, the 26 LSBs of inst, and two zeros as the LSBs. Input 3 of the mux is the output A_data of
+        the register file. The control for the mux4 is the signal control_type and its output is nextPC.
+    </p>
+
+    <p>
+        The 30 MSBs of PC are also the input addr to instruction memory, which outputs inst (32 bits).
+    </p>
+
+    <p>
+        The six MSBs and the 6 LSBs of inst are the opcode and funct inputs to the MIPS instruction decoder,
+        respectively. The decoder also takes the zero flag from another ALU. The outputs of the decoder are: alu_op (3
+        bits), write_enable, rd_src, alu_src2 (2 bits), control_type (2 bits), lui, slt, byte_load, word_we,
+        byte_we, mem_read, and except.
+    </p>
+
+    <p>
+        Additionally, the 16 LSBs of the inst are also inputs to the sign extender, which outputs a 32 bit number. Its
+        output is the input to a left shift by 2 module, which outputs the 32-bit branch offset.
+    </p>
+
+    <p>
+        Additionally, the inst is also an input to the register file. Bits 21 through 25 (inclusive) is rs, which is the
+        input A_addr. Bits 16 through 20 (inclusive) is rt, which is the input B_addr. Bits 11 through 15 (inclusive)
+        are rd, and rd are rt are inputs 0 and 1 respectively to a mux that uses rd_src as the control bit. The output
+        of that mux is the input W_addr of the register. The register also takes the signals wr_enable, clock, and reset
+        as well as the input W_data, which is the output of the LUI mux, which selects between the output of the MEM_READ mux
+        and the 16 LSBs of the inst (also known as the immediate). The outputs of the register file are A_data and
+        B_data, which are 32 bits.
+    </p>
+
+    <p>
+        B_data is the input 0 of a mux. Input 1 of that mux is the output of the sign extender and input 2 is the
+        immediate. The control bits for that mux is the 2-bit signal alu_src2.
+    </p>
+
+    <p>
+        The output of that mux is the B input of an ALU whose A input is A_data from the register. The ALU outputs the
+        overflow, zero, and negative flags, and a 32 bit number.
+    </p>
+
+    <p>
+        This output is the input 0 of the SLT mux. Input 1 of the SLT mux is 31'b0. Its output is the 0 input to the MEM_READ
+        mux. The control bit for the SLT mux is slt.
+    </p>
+
+    <p>
+        Additionally, the 32 bit number from the ALU is the 32-bit input addr in the data memory. Data memory has a 32-bit 
+        input named data_in which comes from an output of the register file, B_data. Data memory also takes in the signals
+        word_we, byte_we, clock, and reset. The output of the data memory is 32-bits and called data_out. 
+    </p>
+
+    <p>
+        The output data_out is split into parts which is fed into a mux4. Bits 31 to 24 (inclusive) is the input 3, bits 23 to 
+        16 (inclusive) is the input 2, bits 15 to 8 (inclusive) is the input 1, and bits 7 to 0 (inclusive) is the input 0. The output 
+        of the mux4 is the input 1 for the BYTE_LOAD mux. The control bit for the mux4 is the least significant bit of the 32-bit 
+        number from the output of ALU.  
+    </p>
+
+    <p>
+        The BYTE_LOAD mux takes in the output of the mux4 from above as the input 1. The input 0 for the BYTE_LOAD mux is the 32-bit 
+        data_out from data_memory. Its output is the input 1 to the MEM_READ mux. The control bit for the BYTE_LOAD mux is byte_load. 
+    </p>
+
+    <p>
+        The MEM_READ mux takes in the output of the BYTE_LOAD mux from above as the input 1. The input 0 for the MEM_READ mux is the 
+        output from the SLT mux. Its ouput is the input 0 to the LUI mux. The control bit for the MEM_READ mux is mem_read.
+    </p>
+</body>

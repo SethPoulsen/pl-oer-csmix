@@ -2,7 +2,7 @@
     "uuid": "b54c0d7d-a2ba-49e4-aeb2-6d9377d73c65",
     "title": "Register file timing diagram",
     "type": "v3",
-    "topic": "Control/Datapath",
+    "topic": "Computer Architecture",
     "dependencies": {
         "clientFilesCourseScripts": [
             "wavedrom/default.js",
@@ -10,6 +10,7 @@
         ]
     },
     "tags": [
-        "glherman"
+        "Control/Datapath",
+        "author:glherman@illinois.edu"
     ]
 }

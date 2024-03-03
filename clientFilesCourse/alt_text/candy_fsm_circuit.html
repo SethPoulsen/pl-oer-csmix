@@ -1,0 +1,26 @@
+<head>
+    <title>Candy FSM Alt Text</title>
+</head>
+
+<body>
+    <p>
+        The sequential circuit is split into 5 DFFEs.
+        The first DFFE takes in nextA which is defined as (n and A) xor (d and D). It also takes in the signal clk.
+        The second DFFE takes in nextB and outputs B. It also takes in the signal clk.
+        The third DFFE takes in nextC and outputs C. It also takes in the signal clk.
+        The fourth DFFE takes in nextD and outputs D. It also takes in the signal clk.
+        The fifth DFFE takes in nextE which is defined as C and n' and d.
+        The final output of the sequential circuit is candy which is defined by D xor E.
+    </p>
+
+    <p>
+        The FSM has states 5 states: A/c', B/c', C/c', D/c, and E/c. Each state has 3 transitions.
+        State A/c' has: d'n' which is a self loop, d'n which points to B/c', and dn' which points to C/c'.
+        State B/c' has: d'n' which is a self loop, d'n which points to C/c', and dn' which points to D/c',
+        State C/c' has: d'n' which is a self loop, d'n which points to D/c, and dn' which points to E/c.
+        State D/c has: d'n' which points to A/c', d'n which points to B/c', and dn' which points to C/c'.
+        E/c has d'n' which points to B/c', d'n which points to C/c', and dn' which points to D/c.
+    </p>
+
+
+</body>

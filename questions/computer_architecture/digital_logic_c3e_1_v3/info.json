@@ -2,9 +2,10 @@
     "uuid": "92e9dff4-8be9-4b4d-b7d1-fdb7b9c879b4",
     "title": "Combinational Logic: Circuit to Expression (3 variables, level 1)",
     "type": "v3",
-    "topic": "Combinational Logic",
+    "topic": "Computer Architecture",
     "tags": [
-        "expression",
-        "circuit"
+        "Combinational Logic",
+        "Circuit",
+        "author:glherman@illinois.edu"
     ]
 }

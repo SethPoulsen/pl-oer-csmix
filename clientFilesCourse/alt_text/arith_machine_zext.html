@@ -1,0 +1,41 @@
+<head>
+    <title>Arithmetic Machine Image Alt Text</title>
+</head>
+
+<body>
+    <p>
+        The input to the arithmetic machine is a 32-bit inst.
+    </p>
+
+    <p>
+        The six MSBs and the 6 LSBs are the opcode and funct inputs to the MIPS instruction decoder, respectively. The
+        outputs of the decoder are: alu_op (3 bits), wr_enable, rd_src, and alu_src2 (2 bits).
+    </p>
+
+    <p>
+        Additionally, the 16 LSBs of the inst are also inputs to both the sign extender and the zero extender, both of
+        which
+        output 32 bit numbers.
+    </p>
+
+    <p>
+        Lastly, the inst is also an input to the register file. Bits 21 through 25 (inclusive) is rs, which is the input
+        A_addr. Bits 16 through 20 (inclusive) is rt, which is the input B_addr. Bits 11 through 15 (inclusive) are rd,
+        and
+        rd are rt are inputs 0 and 1 respectively to a mux that uses rd_src as the control bit. The output of that mux
+        is
+        the input W_addr of the register. The register also takes the signals wr_enable and reset as well as the input
+        W_data, which is the output of the ALU. The outputs of the register file are A_data and B_data, which are 32
+        bits.
+    </p>
+
+    <p>
+        B_data is the input 0 of a mux with three inputs. Input 1 of that mux is the output of the sign extender and
+        input 2
+        is the output of the zero extender. The control bits for that mux is the 2-bit signal alu_src2. The output of
+        that
+        mux is the B input of the ALU and A_data is the A input of the ALU. THe ALU outputs the overflow, zero, and
+        negative
+        flags, and a 32 bit number (which is the input W_data of the register).
+    </p>
+</body>

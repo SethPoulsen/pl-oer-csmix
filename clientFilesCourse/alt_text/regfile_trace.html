@@ -1,0 +1,53 @@
+<head>
+    <title>2x4 Regfile Trace Alt Text</title>
+</head>
+
+<body>
+    <p>
+        The 2x4 register file is composed of two registers, a 1-to-2 binary decoder, and 8 muxs. 
+    </p>
+
+    <p>
+        The register at the top of the image takes wdata (4-bit), clock, and reset signals. It also takes the 0 output of the 1-to-2 decoder as the enable signal.
+    </p>
+
+    <p>
+        The register at the bottom of the image takes wdata (4-bit), clock, and reset signals. It also takes the 1 output of the 1-to-2 decoder as the enable bit.
+    </p>
+
+    <p>
+        Both registers output 4-bit signals, Q3, Q2, Q1, and Q0. These are the inputs to the 8 muxes. Number the muxes from 1 to 8 from top to bottom of the image. 
+    </p>
+
+    <p>
+        The first mux takes Q3 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataA[3]. It takes raddrA as the control bit.
+    </p>
+
+    <p>
+        The second mux takes Q2 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataA[2]. It takes raddrA as the control bit.
+    </p>
+
+    <p>
+        The third mux takes Q1 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataA[1]. It takes raddrA as the control bit.
+    </p>
+
+    <p>
+        The fourth mux takes Q0 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataA[0]. It takes raddrA as the control bit.
+    </p>
+
+    <p>
+        The fifth mux takes Q3 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataB[3]. It takes raddrB as the control bit.
+    </p>
+
+    <p>
+        The sixth mux takes Q2 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataB[2]. It takes raddrB as the control bit.
+    </p>
+
+    <p>
+        The seventh mux takes Q1 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataB[1]. It takes raddrB as the control bit.
+    </p>
+
+    <p>
+        The eighth mux takes Q0 from the top register as input 0 and Q3 from the bottom register as input 1, then outputs rdataB[0]. It takes raddrB as the control bit.
+    </p>
+</body>
