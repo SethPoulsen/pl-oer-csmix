@@ -1,11 +1,10 @@
 {
     "uuid": "0be61aff-a746-4e0d-8071-1ef58e724dbe",
     "title": "Position of Particle in Time",
-    "topic": "C",
+    "topic": "Introduction to Programming",
     "tags": [
-        "jonatan",
-        "worksheet",
-        "random"
+        "author:jonatan@yorku.ca",
+        "C"
     ],
     "type": "v3",
     "gradingMethod": "External",

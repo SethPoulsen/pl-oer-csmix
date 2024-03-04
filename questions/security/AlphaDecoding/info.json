@@ -3,9 +3,8 @@
     "title": "Monoalphabetic Cipher Decryption",
     "topic": "Security",
     "tags": [
-        "security",
         "cryptography",
-        "jonatan"
+        "author:jonatan@yorku.ca"
     ],
     "type": "v3"
 }

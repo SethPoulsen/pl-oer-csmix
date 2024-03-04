@@ -1,11 +1,11 @@
 {
     "uuid": "db648482-db5b-404c-b0ee-d73737b7ddd0",
     "title": "Linked Lists - Remove element",
-    "topic": "Dynamic Memory",
+    "topic": "Data Structures",
     "tags": [
         "linkedlist",
-        "jonatan",
-        "worksheet"
+        "aythor:jonatan@yorku.ca",
+        "Dynamic Memory"
     ],
     "type": "v3",
     "singleVariant": true,

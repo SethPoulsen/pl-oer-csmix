@@ -1,9 +1,9 @@
 {
     "uuid": "6bf79983-cc0e-4472-9c93-645afcc3c06e",
     "title": "Finding information about PATH",
-    "topic": "Linux",
+    "topic": "Systems Programming",
     "tags": [
-        "jonatan",
+        "author:jonatan@yorku.ca",
         "linux"
     ],
     "type": "v3",

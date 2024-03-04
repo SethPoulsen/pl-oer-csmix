@@ -2,13 +2,11 @@
     "uuid": "a6475bd5-d49b-43d1-b2b6-1ee061a6a8b7",
     "type": "v3",
     "title": "Overriding Methods",
-    "topic": "Polymorphism",
+    "topic": "Object Oriented Programming",
     "tags": [
-        "jonatan",
-        "york",
+        "author:jonatan@yorku.ca",
         "polymorphism",
-        "java",
-        "autograder"
+        "java"
     ],
     "singleVariant": true,
     "gradingMethod": "External",

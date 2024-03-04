@@ -18,7 +18,7 @@ def generate(data):
     conversion = random.sample(alphabet, len(alphabet))
 
     list = [
-        ['The', 'Some', 'One', 'My'],
+        ['The',      'Some', 'One', 'My'],
         ["adorable", "clueless", "dirty", "odd", "happy"],
         ["puppy", "car", "rabbit", "friend", "monkey"],
         ["runs", "eats", "jumps", "drives", "plays"],
