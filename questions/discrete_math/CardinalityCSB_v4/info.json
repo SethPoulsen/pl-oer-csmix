@@ -1,11 +1,11 @@
 {
     "uuid": "036a640c-0a35-4b2b-a37d-a9a33d6db485",
-    "title": "CSB proof v4",
-    "topic": "Cardinality",
+    "title": "CSB proof",
+    "topic": "Discrete Math",
     "tags": [
-        "vmahesh",
-        "Fa20",
-        "ProofBlocks"
+        "Cardinality",
+        "ProofBlocks",
+        "author:vmahesh@illinois.edu"
     ],
     "type": "v3",
     "singleVariant": true,

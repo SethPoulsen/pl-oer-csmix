@@ -1,11 +1,10 @@
 {
     "uuid": "540833ab-126d-42de-8a86-e35ee1b25da6",
     "title": "Estimating Probabilities with Decision Tree Plots",
-    "topic": "tree",
+    "topic": "Modeling and Learning in Data Science",
     "tags": [
-        "sp24",
-        "num",
-        "dd💀"
+        "tree",
+        "author:dalpiaz2@illinois.edu"
     ],
     "type": "v3"
 }

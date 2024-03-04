@@ -1,11 +1,10 @@
 {
     "uuid": "b0c1407c-61c0-458c-8912-34d75c4e2187",
     "title": "Dummy Encoding",
-    "topic": "preprocessing",
+    "topic": "Modeling and Learning in Data Science",
     "tags": [
-        "num",
-        "sp24",
-        "dd💀"
+        "preprocessing",
+        "author:dalpiaz2@illinois.edu"
     ],
     "type": "v3"
 }

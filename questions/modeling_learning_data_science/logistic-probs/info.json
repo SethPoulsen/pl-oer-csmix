@@ -1,11 +1,10 @@
 {
     "uuid": "e250b67c-120c-467b-b4b9-2f4e4d185e6f",
     "title": "Logistic Regression: Probabilities",
-    "topic": "linear",
+    "topic": "Modeling and Learning in Data Science",
     "tags": [
-        "sp24",
-        "num",
-        "dd💀"
+        "linear",
+        "author:dalpiaz2@illinois.edu"
     ],
     "type": "v3"
 }

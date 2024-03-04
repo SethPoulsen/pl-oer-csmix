@@ -1,11 +1,10 @@
 {
     "uuid": "8a3bb1eb-f39e-4a50-aa23-80df73b2cb84",
     "title": "Making Conditional Probability Estimations with KNN",
-    "topic": "knn",
+    "topic": "Modeling and Learning in Data Science",
     "tags": [
-        "num",
-        "sp24",
-        "dd💀"
+        "knn",
+        "author:dalpiaz2@illinois.edu"
     ],
     "type": "v3"
 }

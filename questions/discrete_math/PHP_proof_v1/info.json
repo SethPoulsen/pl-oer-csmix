@@ -1,10 +1,10 @@
 {
     "uuid": "ab443714-a53b-4e3e-ac69-f9efdc2a9a1d",
-    "title": "PHP proof v1",
-    "topic": "Combinatorics",
+    "title": "PHP proof",
+    "topic": "Discrete Math",
     "tags": [
-        "vmahesh",
-        "Fa20",
+        "author:vmahesh@illinois.edu",
+        "Combinatorics",
         "ProofBlocks"
     ],
     "type": "v3",

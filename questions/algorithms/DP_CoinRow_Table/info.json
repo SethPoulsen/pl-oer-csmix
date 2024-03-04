@@ -1,12 +1,10 @@
 {
     "uuid": "3b24a2d1-f68f-4818-bb6e-20b2555ad5f7",
     "title": "Coin Row Table",
-    "topic": "Dynamic Programming",
+    "topic": "Algorithms",
     "tags": [
-        "ygertner",
-        "pflorid2",
-        "sp24",
-        "v3"
+        "author:ygertner@illinois.edu",
+        "Dynamic Programming"
     ],
     "type": "v3"
 }

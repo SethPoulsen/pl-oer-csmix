@@ -1,11 +1,10 @@
 {
     "uuid": "84b72eae-a48c-4247-b1ca-44c14b4c58aa",
     "title": "Making Prediction and Calculating RMSE with Linear Models",
-    "topic": "linear",
+    "topic": "Modeling and Learning in Data Science",
     "tags": [
-        "num",
-        "sp24",
-        "dd💀"
+        "linear",
+        "author:dalpiaz2@illinois.edu"
     ],
     "type": "v3"
 }

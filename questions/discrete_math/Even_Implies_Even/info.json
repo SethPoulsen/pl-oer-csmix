@@ -1,9 +1,10 @@
 {
     "uuid": "1bccb8a7-4a99-45fe-95d1-c7393eea444f",
     "title": "Even Implies Even",
-    "topic": "Basic Proofs",
+    "topic": "Discrete Math",
     "tags": [
-        "sethp3",
+        "Basic Proofs",
+        "author:seth.poulsen@usu.edu",
         "ProofBlocks"
     ],
     "type": "v3",

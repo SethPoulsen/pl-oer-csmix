@@ -1,11 +1,10 @@
 {
     "uuid": "2e699419-1739-45d6-bf23-0168f244f247",
     "title": "Normal Probabilities",
-    "topic": "probability",
+    "topic": "Modeling and Learning in Data Science",
     "tags": [
-        "num",
-        "sp24",
-        "dd💀"
+        "probability",
+        "author:dalpiaz2@illinois.edu"
     ],
     "type": "v3"
 }

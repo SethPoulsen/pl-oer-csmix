@@ -1,14 +1,10 @@
 {
     "uuid": "d65d9fef-702f-4443-929d-00617225f7cb",
     "title": "FillInTruthTable_Practice2Prop",
-    "topic": "Logic",
+    "topic": "Algorithms",
     "tags": [
-        "ygertner",
-        "pflorid2",
-        "sp24",
-        "sp21",
-        "MC",
-        "v3"
+        "author:ygertner@illinois.edu",
+        "Logic"
     ],
     "type": "v3"
 }
