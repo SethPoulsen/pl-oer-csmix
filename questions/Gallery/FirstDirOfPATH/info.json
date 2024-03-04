@@ -1,0 +1,18 @@
+{
+    "uuid": "6bf79983-cc0e-4472-9c93-645afcc3c06e",
+    "title": "Finding information about PATH",
+    "topic": "Linux",
+    "tags": [
+        "jonatan",
+        "linux"
+    ],
+    "type": "v3",
+    "singleVariant": true,
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "enabled": true,
+        "image": "python:3.10",
+        "entrypoint": "python /grade/tests/grade.py",
+        "timeout": 2
+    }
+}
