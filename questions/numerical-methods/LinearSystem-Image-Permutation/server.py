@@ -1,8 +1,5 @@
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import matplotlib.cm as cm
-import numpy as np
-import numpy.linalg as la
 import io
 import random
 import sys
