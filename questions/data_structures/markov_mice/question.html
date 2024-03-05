@@ -1,0 +1,26 @@
+<pl-question-panel>
+
+
+<p>Suppose a mouse is sitting somewhere in the floor plan below. When a bell rings, the mouse runs to a new room through one of the
+doors. The mouse is equally likely to choose any one of the doors in its current room. </p>
+
+<pl-figure file-name="house.png" type="dynamic"></pl-figure>
+
+<p>
+The mouse's location over time can be modeled using a Markov Chain. Fill in the table below so that cell $(i,j)$ contains 
+the probability the mouse moves from room $i$ to room $j$ in one ring of the bell. In our notation, $i$ denotes a row, and $j$
+denotes a column. The rooms are arranged alphabetically over the rows and columns.
+</p>
+</pl-question-panel>
+
+<pl-matrix-component-input answers-name="trans" allow-partial-credit="true"></pl-matrix-component-input>
+
+<p>
+Suppose the mouse begins in room {{params.startroom}}. What is the probability the mouse will visit room {{params.tworoom}} within
+the first two bell rings?
+</p>
+
+<pl-number-input answers-name=two></pl-number-input>
+
+
+

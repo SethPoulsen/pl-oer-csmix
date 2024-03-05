@@ -1,0 +1,48 @@
+
+<pl-question-panel>
+    <p>
+	Given the following recurrence relations, derive their closed forms by drawing a recursion tree and/or using algebraic manipulation, and then enter your closed forms in the corresponding textboxes below.
+	</p>
+	</pl-question-panel>
+
+	<p style="text-indent:30px">
+		$R(n) = \begin{cases}
+		1, \text{  for } n = 0\\
+		R(n - 1) + {{params.A1}} c,  \text{  for } n \geq 1, c \in \mathbb{N}
+		\end{cases}
+		$
+	</p>
+<p>
+	<pl-symbolic-input answers-name="recurrence1" variables="{{params.c}}, {{params.n}}" label="$R(n) = $"></pl-symbolic-input>
+</p>
+	<p style="text-indent:30px">
+		$S(n) = \begin{cases}
+		{{params.B2}}, \text{  for } n = 1\\
+		{{params.A2}} S(n - 1) + {{params.B2}} n,  \text{  for } n \gt 1
+		\end{cases}
+		$
+	</p>
+<p>
+	<pl-symbolic-input answers-name="recurrence2" variables="{{params.n}}" label="$S(n) = $"></pl-symbolic-input>
+</p>
+
+	<p style="text-indent:30px">
+		$T(n) = \begin{cases}
+		{{params.B3}}, \text{  for } n = 1\\
+		{{params.A3}} T(n / {{params.A3}}) + {{params.B3}} n,  \text{  for } n \gt 1
+		\end{cases}
+		$
+	</p>
+<p>
+	<pl-symbolic-input answers-name="recurrence3" variables="{{params.n}}" label="$T(n) = $"></pl-symbolic-input>
+</p>
+	<p>Notes: 
+	<ul>
+	    <li>You may assume that $n$ is a power of ${{params.A3}}$.</li>
+	    <li>To specify $\log_b(n)$, use <code>log(n,b)</code></li>
+	    <li>You may find it helpful to remind yourself how to compute the sum of a geometric series.</li>
+	    <li>You may find it helpful to know that $\sum_{k=0}^{n-1} k a^k = \frac{(n-1)a^{n+1} - n a^n + a}{(a-1)^2}
+$. (Of course, that equation may not be in the form you need, even if it is useful!)</li>
+	</ul>
+	</p>
+

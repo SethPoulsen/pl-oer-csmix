@@ -1,0 +1,46 @@
+<p>
+  In each of the given graphs, we have marked a minimum spanning tree (MST), but we have not told you the weights of the edges!
+  Label each MST edge with the <b>largest</b> possible integer it can be, subject to the constraints in the problem part. (Where there are multiple correct answers that satisfy the constraints, any such answer will receive credit.)
+  <!-- Note that in each case, the given MST is unique--there is no other spanning tree with the same total cost. -->
+</p>
+
+<br>
+
+<div class="card my-2">
+  <div class="card-header">
+    a)
+  </div>
+  <div class="card-body">
+    <pl-question-panel>
+      Edge weights are not necessarily unique.
+      The MST is unique.
+      <br>
+      <pl-graph engine="neato" log-warnings="False">
+        {{params.graph_max}}
+      </pl-graph>
+    </pl-question-panel>
+
+    {{{params.max_question_html}}}
+
+  </div>
+</div>
+
+<br>
+
+<div class="card my-2">
+  <div class="card-header">
+    b)
+  </div>
+  <div class="card-body">
+    <pl-question-panel>
+      All the edge weights of edges actually in the MST must be unique. (However, their weights may duplicate weights of non-MST edges.) There is no other MST with this same weight.
+      <br>
+      <pl-graph engine="neato" log-warnings="False">
+        {{params.graph_unique}}
+      </pl-graph>
+    </pl-question-panel>
+
+    {{{params.unique_question_html}}}
+
+  </div>
+</div>

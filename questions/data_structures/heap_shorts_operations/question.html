@@ -1,0 +1,23 @@
+<pl-question-panel>
+  Consider the following Min Heap:
+  <pl-graph engine="dot" log-warnings="False">
+    {{params.graph}}
+  </pl-graph>
+
+</pl-question-panel>
+
+<p> The most recent operation on this heap was an insert of some key $x$. What are the possible values of $x$? 
+
+  <pl-checkbox answers-name="heap_manipulation_insert" fixed-order="true" partial-credit="true" partial-credit-method="PC" inline="true" weight=2>
+    {{& params.inserted_values}}
+  </pl-checkbox>
+</p>
+
+<br/><br/>
+
+<p> Suppose we call <code>deleteMin</code> on the given heap. That operation changes the position of which of the following keys? (Be sure to include the key you removed!)
+
+  <pl-checkbox answers-name="heap_manipulation_remove" fixed-order="true" partial-credit="true" partial-credit-method="PC" inline="true" weight=2>
+    {{& params.removed_values}}
+  </pl-checkbox>
+</p>
