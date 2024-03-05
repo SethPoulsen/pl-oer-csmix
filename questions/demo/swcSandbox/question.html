@@ -1,0 +1,46 @@
+<pl-sqlite dbfile="survey.db">
+  <pl-question-panel>
+    <p>
+      This page is a SQL sandbox for Survey database from the
+      <a href="https://swcarpentry.github.io/sql-novice-survey/" target="_blank"
+        >Software Carpentries Databases and SQL</a> lessons.
+    </p>
+    <a href="#surveyDiagram" data-toggle="collapse">Show/hide keys diagram</a>
+    <br/>
+    <div class="collapse" id="surveyDiagram">
+      <pl-figure file-name="survey-arrows.png"
+      alt="A diagram of the tables in the Survey database with 3 arrows drawn from Site.name to Visited.site, Person.id to Survey.person, and Visited.id to Survey.taken."
+      ></pl-figure>
+    </div>
+    <a href="#tableInfo" data-toggle="collapse">Show/hide table info</a>
+    <div class="row collapse show" id="tableInfo">
+      <div class="col">
+        <query title="Table Person" summary="false">
+          .tableinfo Person brief
+        </query>
+      </div>
+      <div class="col">
+        <query title="Table Site" summary="false">
+          .tableinfo Site brief
+        </query>
+      </div>
+      <div class="col">
+        <query title="Table Visited" summary="false">
+          .tableinfo Visited brief
+        </query>
+      </div>
+      <div class="col">
+        <query title="Table Survey" summary="false">
+          .tableinfo Survey brief
+        </query>
+      </div>
+    </div>
+  </pl-question-panel>
+
+  <sandbox>
+    <preload slug="Explore Person table">SELECT * FROM Person;</preload>
+    <preload slug="JOIN example">SELECT *
+FROM Site
+JOIN Visited ON Site.name = Visited.site;</preload>
+  </sandbox>
+</pl-sqlite>
