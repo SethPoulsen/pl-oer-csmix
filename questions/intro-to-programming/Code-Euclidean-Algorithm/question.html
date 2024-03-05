@@ -1,0 +1,32 @@
+<pl-question-panel>
+    <p>
+        As a mathematician and computer programmer, you are interested in writing 
+        the Euclidean Algorithm. Upon searching on Wikipedia, you find the following pseudocode for 
+        the algorithm.</p>
+    <pl-code>
+function gcd(a, b):
+    while b is not 0
+        t := b
+        b := a mod b
+        a := t
+    return a</pl-code>
+
+    <p>
+        Using your knowledge on programming, can you write the code for the Euclidean Algorithm? 
+        You can assume the inputs <code>a</code> and <code>b</code> are always positive integers. 
+    </p>
+
+    <p> Your code snippet should define the following variable: </p>
+    <pl-external-grader-variables params-name="names_from_user"></pl-external-grader-variables>
+    
+    <pl-file-editor
+        file_name="user_code.py"
+        ace_mode="ace/mode/python">
+    </pl-file-editor>
+
+</pl-question-panel>
+
+<pl-submission-panel>
+    <pl-external-grader-results></pl-external-grader-results>
+    <pl-file-preview></pl-file-preview>
+</pl-submission-panel>          

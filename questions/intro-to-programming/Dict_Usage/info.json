@@ -1,0 +1,18 @@
+{
+    "uuid": "b882263f-1061-4b2a-a44e-9e270733904f",
+    "title": "Use Dictionary",
+    "topic": "Introduction to Programming",
+    "tags": [
+        "Dictionaries",
+        "Python"
+    ],
+    "type": "v3",
+    "singleVariant": true,
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "enabled": true,
+        "image": "prairielearn/grader-python",
+        "entrypoint": "/python_autograder/run.sh",
+        "timeout": 20
+    }
+}

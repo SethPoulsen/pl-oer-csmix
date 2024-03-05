@@ -1,0 +1,43 @@
+<pl-question-panel>
+    <p>
+        Your instructor is storing all the grades data for all students 
+        in a dictionary called <code>gradebook</code>. 
+        The dictionary maps the name of each student to their grades. 
+        For any student, the grade is also a dictionary mapping assessment to score. 
+        An example of <code>gradebook</code> would look like <code>{'Alice':{'hw1': 98, 'hw2': 90}, 'Bob': {'hw1': 100, 'hw2': 85}}</code>. 
+    </p>
+
+    <p>
+        After a regrade attempt, the instructor wanted to 
+        <ol>
+            <li>Add <code>{{params.score_to_add}}</code> points to 
+                <code>{{params.student_to_fix}}</code>'s score on <code>{{params.assessment_to_fix}}</code></li>
+            <li>Add <code>1</code> point to evenyone's score on <code>hw1</code></li>
+        </ol>
+        and wrote some code to achieve that:
+    </p>
+
+    <pl-code language="python">{{params.bugged_code}}</pl-code>
+
+    <p>
+        However, the code is currently bugged. Can you modify the code so it achieves the original goal? 
+    </p>
+
+    <p> The setup code gives the following variables: </p>
+    <pl-external-grader-variables params-name="names_for_user"></pl-external-grader-variables>
+        
+    <p> Your code snippet should define the following variables: </p>
+    <pl-external-grader-variables params-name="names_from_user"></pl-external-grader-variables>
+    
+    <pl-file-editor
+        file_name="user_code.py"
+        ace_mode="ace/mode/python">
+{{params.bugged_code}}
+    </pl-file-editor>
+
+</pl-question-panel>
+
+<pl-submission-panel>
+    <pl-external-grader-results></pl-external-grader-results>
+    <pl-file-preview></pl-file-preview>
+</pl-submission-panel>

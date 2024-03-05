@@ -1,0 +1,30 @@
+<pl-question-panel> 
+<markdown>
+
+# Finding the Type of a Variable
+
+In a different universe, there is no built-in function to find the type of a variable. Scientists have been working on this problem for centuries. Today, you finally find the breakthrough to solve this problem - what will happen if you call a function with a variable which type is not accepted by the function?
+
+Your job is to define a function `find_type` and it takes one argument that can either be a string or an integer. Your function should return the type of the variable. Here are some notes for the task:
+- if the variable is an `int`, return "**int**"
+- if the variable is a `str`, return "**str**"
+- You cannot use `type()` or `isinstance()` to find the type of the variable
+- You may find `len()` useful to solve the problem. Can you find any other function that can solve the problem?
+
+
+
+</markdown>
+
+<p>Your code snippet should define the following variables:</p>
+<pl-external-grader-variables params-name="names_from_user"></pl-external-grader-variables>
+<pl-file-editor
+        file-name="user_code.py"
+        ace-mode="ace/mode/python"
+        source-file-name="tests/initial_code.py">
+</pl-file-editor>
+</pl-question-panel>
+
+<pl-submission-panel>
+    <pl-external-grader-results></pl-external-grader-results>
+    <pl-file-preview></pl-file-preview>
+</pl-submission-panel>

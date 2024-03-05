@@ -1,0 +1,33 @@
+<pl-question-panel> 
+<markdown>
+
+# Use the Dictionary!
+You are working on a database for your company, using Python to organize data into a neat dictionary. You've built this system from scratch, and it's your pride. The dictionary `products` contains information from all the company's products. The key is the **product number**, and the value is another dictionary containing two keys, **name** and **price** , and their corresponding values. Here is an example of one product data:
+
+```
+'C200': {'name': 'UIUC Coaster', 'price': 399.99}
+```
+
+Now, your boss wants some product information that should be extracted from the dictionary `products`:
+
+-   get all the product numbers, store them in a list, `products_number`. You may find `list()` useful.
+-   find the product information for **{{params.prod_info}}**, store it in `product_info`. It should be a dictionary with `name` and `price` as keys.
+-   find the **product name** which price is **{{params.price}}**, store it in `product_name` (We guarantee that there is only one corresponding product for the given price! Don't worry about duplication!)
+
+</markdown>
+<p>The setup code gives the following variables:</p>
+<p><pl-external-grader-variables params-name="names_for_user"></pl-external-grader-variables></p>
+
+<p>Your code snippet should define the following variables:</p>
+<pl-external-grader-variables params-name="names_from_user"></pl-external-grader-variables>
+<pl-file-editor
+        file-name="user_code.py"
+        ace-mode="ace/mode/python"
+        source-file-name="tests/initial_code.py">
+</pl-file-editor>
+</pl-question-panel>
+
+<pl-submission-panel>
+    <pl-external-grader-results></pl-external-grader-results>
+    <pl-file-preview></pl-file-preview>
+</pl-submission-panel>

@@ -1,0 +1,26 @@
+<pl-question-panel> 
+<markdown>
+
+# Sign Your Name
+
+You are a supervisor at a technology company, and today, your task involves signing each employee's electronic payslip. To avoid the tedious process of manually opening all the documents and signing your name, you decide to use Python to do the work for you.
+
+Your are given a string `file_path` and a string `name`. Your task is to open the file located at `file_path` and **{{params.method}}** the `name` to the file.
+
+</markdown>
+<p>The setup code gives the following variables:</p>
+<p><pl-external-grader-variables params-name="names_for_user"></pl-external-grader-variables></p>
+<!-- 
+<p>Your code snippet should define the following variables:</p>
+<pl-external-grader-variables params-name="names_from_user"></pl-external-grader-variables> -->
+<pl-file-editor
+        file-name="user_code.py"
+        ace-mode="ace/mode/python"
+        source-file-name="tests/initial_code.py">
+</pl-file-editor>
+</pl-question-panel>
+
+<pl-submission-panel>
+    <pl-external-grader-results></pl-external-grader-results>
+    <pl-file-preview></pl-file-preview>
+</pl-submission-panel>

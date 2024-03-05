@@ -1,0 +1,24 @@
+<pl-question-panel>
+  <p>What will happen if we run the code below?</p>
+
+<pl-code language="python">l = [1,2,3,4,5]
+out = []
+for i in range({{params.scope}}):
+    out.append(l[i]/i)</pl-code>
+  <markdown> **You are encouraged to copy this code and try it on your own computer! Just make sure you understand why and could handle this type of question in Quiz : )** </markdown>
+</pl-question-panel>
+
+<pl-multiple-choice answers-name="r">
+  <pl-answer correct="true">
+    {{params.ans}}
+  </pl-answer>
+  <pl-answer correct="false">
+      {{params.wrong1}}
+  </pl-answer>
+  <pl-answer correct="false">
+    {{params.wrong2}}
+  </pl-answer>
+  <pl-answer correct="false">
+    KeyError
+  </pl-answer>
+</pl-multiple-choice>
