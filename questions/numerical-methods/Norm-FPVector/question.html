@@ -1,0 +1,40 @@
+
+
+<pl-question-panel>
+<p>
+  Consider a (binary) floating point system of the form
+  {{params.representation}} where {{params.exp_range}}.
+  Calculate the relative error, with respect to {{params.p}}-norm
+  if we convert the vector $\mathbf{x} \in \mathbb{R}^{{params.d}}$ to
+  the given floating point system. When converting to floating point,
+  first convert to a binary number then truncate any additional bits.
+</p>
+
+<p>
+    $\mathbf{x} =  <pl-matrix-latex params-name="x"
+                                    presentation-type="sigfig" 
+                                    digits="8">
+                    </pl-matrix-latex>$
+</p>
+
+<p>
+    Note: We are interested in the representation accuracy of floating point.
+    So assume that all operations performed (addition, subtraction, etc.)
+    do not increase the error.
+</p>
+
+</pl-question-panel>
+
+<p>
+  <pl-number-input label="$\text{relative error}(\mathbf{x}) = $" 
+  answers-name="rel-err" comparison="relabs" rtol="1e-2" atol="1e-3">
+  </pl-number-input>
+</p>
+
+
+{{#feedback.question_feedback}}
+<pl-answer-panel>
+<p class="mt-4"> {{{ feedback.question_feedback }}} </p>
+</pl-answer-panel>
+{{/feedback.question_feedback}}
+

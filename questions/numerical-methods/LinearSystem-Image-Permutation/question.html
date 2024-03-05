@@ -1,0 +1,46 @@
+<pl-question-panel>
+  <h4>What is the number hidden in the image below?</h4>
+  <div style="display: flex;text-align: center;margin: 0 auto; width:250px">
+    <div>
+      <pl-figure file-name="figure.png" type="dynamic" width=800px></pl-figure>
+    </div>
+  </div>
+
+    <p>Can't tell? We can help you! </p>
+
+  <p>
+    The original image <code>xmat</code> was scrambled using the matrix operator 
+    <code>A</code>, which randomly permuted the pixels in each row and column.  The result
+    is the scrambled image <code>ymat</code>, a 2d numpy 
+    array with shape $(n,m)$. The matrix operator <code>A</code> has shape
+    $(nm,nm)$. When the matrix <code>A</code> operated on the original image 
+    <code>xmat</code>, the matrix <code>xmat</code> was first flattened row-wise.
+  </p>
+  <p>
+    You can now use the same operator to unscramble the image! Define the 2d numpy array
+    <code>xmat</code> which contains the unscrambled (original) image. 
+    Visualize the image using:
+  </p>
+  <pl-code>plt.imshow(xmat, cmap = plt.get_cmap('gray'))</pl-code>
+
+  <p> 
+    The setup code contains the  matrix operator <code>A</code> 
+    and the scrambled image <code>ymat</code>. 
+  <p>
+  <pl-external-grader-variables params-name="names_for_user"></pl-external-grader-variables>
+
+  <p>Your code snippet should define the following functions/variables: </p>
+  <pl-external-grader-variables params-name="names_from_user"></pl-external-grader-variables>
+
+  <pl-file-editor
+      file_name="user_code.py"
+      ace_mode="ace/mode/python"
+      source-file-name="tests/initial_code.py">
+  </pl-file-editor>
+
+</pl-question-panel>
+
+<pl-submission-panel>
+  <pl-external-grader-results></pl-external-grader-results>
+  <pl-file-preview></pl-file-preview>
+</pl-submission-panel>
