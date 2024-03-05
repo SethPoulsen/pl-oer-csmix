@@ -1,0 +1,22 @@
+{
+    "uuid": "c9f7217b-9b8b-4376-82e3-f477ca76f6ac",
+    "title": "SWC-07 DR-1 personnel",
+    "topic": "SQL",
+    "tags": [
+        "swcsql"
+    ],
+    "type": "v3",
+    "showCorrectAnswer": false,
+    "singleVariant": true,
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "enabled": true,
+        "image": "trombonekenny/sqlite3",
+        "serverFilesCourse": [
+            "grader1.py",
+            "sqlitegrader.py",
+            "survey.db"
+        ],
+        "entrypoint": "/grade/serverFilesCourse/grader1.py"
+    }
+}

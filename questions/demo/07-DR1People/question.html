@@ -1,0 +1,42 @@
+<pl-sqlite dbfile="survey.db">
+  <pl-question-panel>
+    <p>
+      This question is based off the
+      <a href="https://swcarpentry.github.io/sql-novice-survey/07-join.html">Software Carpentry Databases and SQL:
+      Combining Data</a> lesson. See the sandbox question for more information about the tables.
+    </p>
+    <p>
+      Write a query that answers the following information seeking purpose:
+    </p>
+    <p>
+      Who are the people working on site DR-1 sorted by first name?
+    </p>
+    </p>
+      The output columns should be:
+    <table class="table table-sm table-bordered w-auto">
+      <thead class="thead-light">
+        <tr>
+          <th>personal</th>
+          <th>family</tr>
+        </tr>
+      </thead>
+    </table>
+  </pl-question-panel>
+  <sandbox answers-name="whowhere">
+    <answer>SELECT DISTINCT personal, family
+FROM Survey
+JOIN Person ON Survey.person = Person.id
+JOIN Visited ON Survey.taken = Visited.id
+WHERE site = 'DR-1'
+ORDER BY personal;</answer>
+      <preload slug="View people, surveys, and visits">SELECT *
+FROM Survey
+JOIN Person ON Survey.person = Person.id
+JOIN Visited ON Survey.taken = Visited.id</preload>
+      <preload slug="Load answer">SELECT DISTINCT personal, family FROM Survey
+JOIN Person ON Survey.person = Person.id
+JOIN Visited ON Survey.taken = Visited.id
+WHERE site = 'DR-1'
+ORDER BY personal;</preload>
+  </sandbox>
+</pl-sqlite>
