@@ -1,0 +1,122 @@
+{{^answer}}
+    {{#editable}}
+    <b>SQL Sandbox: </b>
+    {{#preload.0}}Load into editor{{/preload.0}}
+    {{#preload}}
+        <a href="#" onclick="sandboxEditors['{{ uuid }}'].setValue(`{{ content }}`, 1);
+            sandboxEditors['{{ uuid }}'].focus();
+            event.preventDefault();">{{ slug }}</a>{{^last}}, {{/last}}
+    {{/preload}}
+    {{#localDev}}
+        <button type="button" class="btn btn-success btn-sm ml-5"
+        onclick="sandboxEditors['{{ uuid }}'].setValue(`{{ correct_answer }}`, 1);
+            sandboxEditors['{{ uuid }}'].focus();
+            simulateClick('sandbox-runit-{{ uuid }}');
+            event.preventDefault();"
+        >Local Development: Load answer</button>
+    {{/localDev}}
+    {{/editable}}
+
+    {{#parse_error}}
+    <div class="sandbox-parse-error p-1" style="border: 3px solid red;">
+    {{/parse_error}}
+    <div id="sandbox-ace-{{ uuid }}" style="border: 1px solid lightgrey;font-size: 1rem;"
+    >-- Editor loading...</div>
+    <textarea id="sandbox-input-{{ uuid }}" class="d-none" name="{{ answers_name }}"
+    >{{{ submitted_answer }}}</textarea>
+
+    {{#parse_error}}
+    <div>
+    <a
+        role="button"
+        class="btn btn-light border text-danger text-wrap"
+        data-toggle="popover"
+        data-html="true"
+        title="Format Error"
+        data-placement="auto"
+        data-trigger="focus"
+        tabindex="0"
+        data-content="{{parse_error}}"
+    >
+        Invalid <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    </a> {{ parse_error }}
+    </div>
+    </div>
+    {{/parse_error}}
+
+{{#sandbox}}
+<p>
+<button type="button" class="btn btn-md" style="background-color:orange;"
+id="sandbox-runit-{{ uuid }}"
+onclick="
+    runsql({sql: document.getElementById('sandbox-input-{{ uuid }}').value,
+     output_id: 'sandbox-output-{{ uuid }}',
+     summary: true,
+     width: 'full',
+    });
+    sandboxEditors['{{ uuid }}'].focus();
+    ">Run it! <i>(Shift-Enter)</i></button>
+<button type="button" class="btn btn-light"
+    {{^editable}}disabled{{/editable}}
+    onClick="sandboxEditors['{{ uuid }}'].setValue('');
+    sandboxEditors['{{ uuid }}'].focus();">Clear</button>
+<button type="button" class="btn btn-secondary"
+    onclick="toggleWider(document.getElementById('content'), this);
+    sandboxEditors['{{ uuid }}'].focus();"
+    >Toggle width</button>
+<span class="ml-2">Use <tt>.help</tt> for more commands.</span>
+</p>
+<div id="sandbox-output-{{ uuid }}" class="sqlresult mb-2 p-0"></div>
+{{/sandbox}}
+
+<script>
+    sandboxEditors['{{ uuid }}'] = ace.edit("sandbox-ace-{{ uuid }}");
+    sandboxEditors['{{ uuid }}'].setTheme("ace/theme/sqlserver");
+    sandboxEditors['{{ uuid }}'].session.setMode("ace/mode/sql");
+    sandboxEditors['{{ uuid }}'].setOptions({
+        autoScrollEditorIntoView: true,
+        minLines: 6,
+        maxLines: 200,
+        showPrintMargin: false,
+
+        {{^editable}}
+            readOnly: true,
+            highlightActiveLine: false,
+            highlightGutterLine: false,
+        {{/editable}}
+    });
+
+    {{^editable}}
+        sandboxEditors['{{ uuid }}'].renderer.$cursorLayer.element.style.display = 'none';
+    {{/editable}}
+
+    // Update to/from the textarea
+    sandboxEditors['{{ uuid }}'].getSession().setValue(
+        document.getElementById('sandbox-input-{{ uuid }}').value);
+    sandboxEditors['{{ uuid }}'].getSession().on('change', () => {
+        document.getElementById('sandbox-input-{{ uuid }}').value =
+            sandboxEditors['{{ uuid }}'].getSession().getValue();
+    });
+
+    {{#editable}}
+        // Key bindings to simulate clicking Run it
+        sandboxEditors['{{ uuid }}'].commands.bindKeys({
+            "Shift-Enter|Ctrl-Enter": (thiseditor) => {
+                simulateClick('sandbox-runit-{{ uuid }}');
+            },
+        });
+
+        // Onload focus and navigate to the end onload
+        sandboxEditorsOrder.push('{{ uuid }}');
+    {{/editable}}
+
+</script>
+
+{{#submission}}
+<pl-external-grader-results></pl-external-grader-results>
+{{/submission}}
+{{/answer}}
+
+{{#answer}}
+Correct answers are not shown for this question type. Check your submission history.
+{{/answer}}

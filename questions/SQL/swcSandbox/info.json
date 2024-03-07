@@ -4,7 +4,7 @@
     "singleVariant": true,
     "topic": "SQL",
     "tags": [
-        "swcsql",
+        "sqlite",
         "sandbox"
     ],
     "type": "v3"

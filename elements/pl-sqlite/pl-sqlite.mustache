@@ -1,0 +1,16 @@
+<script>
+    $( async () => {
+        await setupsql("{{ dburl }}");
+        {{#foreign_keys}}
+        runsql({
+            sql: "PRAGMA foreign_keys = ON;",
+        });
+        {{/foreign_keys}}
+
+        let firstSandbox = sandboxEditorsOrder[0];
+        if (firstSandbox) {
+            sandboxEditors[firstSandbox].focus();
+            sandboxEditors[firstSandbox].navigateFileEnd();
+        }
+    });
+</script>

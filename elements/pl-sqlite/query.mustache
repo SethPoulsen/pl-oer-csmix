@@ -1,0 +1,33 @@
+{{#question}}
+    {{^deferred}}
+    <script>
+        queuedQueries.push({
+            sql: `{{{ query }}}`,
+            output_id: '{{ output_id }}',
+            summary: {{ summary }},
+            {{#width}}
+            width: '{{.}}',
+            {{/width}}
+        });
+    </script>
+    {{/deferred}}
+    {{#heading}}
+    <h6>{{ heading }}
+    {{#redo}}
+        <button type="button" class="btn btn-xs" style="background-color:orange;"
+onclick="
+    runsql({sql: `{{{ query }}}`,
+     output_id: '{{ output_id }}',
+     summary: {{ summary }}
+     {{#width}}
+     width: '{{.}}',
+     {{/width}}
+    });
+    "><i class="fas fa-redo"></i></button>
+    {{/redo}}
+    </h6>
+    {{/heading}}
+    {{^quiet}}
+        <div id='{{ output_id }}'></div>
+    {{/quiet}}
+{{/question}}

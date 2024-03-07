@@ -3,7 +3,7 @@
     "title": "SWC-07 DR-1 personnel",
     "topic": "SQL",
     "tags": [
-        "swcsql"
+        "sqlite"
     ],
     "type": "v3",
     "showCorrectAnswer": false,
