@@ -1,0 +1,105 @@
+<pl-question-panel>
+<div class="pl-requires-svg-mathjax"></div> 
+
+<script src="{{ options.client_files_course_url }}/itemSets/moo.js"></script>
+<script src="{{ options.client_files_course_url }}/itemSets/nearley.js"></script>
+<script src="{{ options.client_files_course_url }}/itemSets/itemSetParserEx.js"></script>
+<script src="{{ options.client_files_course_url }}/itemSets/latexifyItemSet.js"></script>
+<!--<script src="{{ options.client_files_question_url }}/sol.js"></script>-->
+
+  <p> Consider the following grammar and follow sets.  The numbers to the left indicate the rule numbers for the state machine.</p>
+
+    \[ \begin{array}{lrl}
+    0 &    S \rightarrow & a\ E\ f \\
+	1 &            | & x\ F \\
+	2 & E \rightarrow & E\ y \\
+	3 &            | & z \\
+    4 &     F \rightarrow & a\ E \\
+	5 &            | & a\ F \\
+       \end{array} \]
+
+  \[ \begin{array}{l}
+  FOLLOW(S) = \{\$\} \\
+  FOLLOW(F) = \{\$\} \\
+  FOLLOW(E) = \{f,y,\$\} \\
+  \end{array} \]
+
+  <p> Your job is to produce the item sets for this grammar.  There are 11 states in the answer ($I_0$ to $I_{10}$).</p>
+
+  <ul>
+      <li> Use <code>-&gt;</code> for $\rightarrow$, <code>|</code> for $|$. </li>
+      <li> Use an empty production such as <code> S -&gt; </code> for an $\epsilon$-production.</li>
+      <li> If a non-terminal has multiple productions, only the first should use the \(\rightarrow\), the rest should use \(|\).</li>
+      <li> If you add a non-terminal to a set because of taking a closure, the first production should also use \(\rightarrow\), even if it is repeated.
+      <li> You may not rename any symbols. </li>
+      <li> Spaces and newlines do not matter. </li>
+      <li> Actions are given in the form of a letter followed by a number. <code>s0</code> is a shift to state 0, <code>g0</code> is a go-to action to state 0, <code>r0</code> is a reduction using grammar rule 0.</li>
+  </ul>
+
+  <p>We have given you the first state.  The grader will tell you a percentage difference from the correct solution (using the edit distance)
+      but scaled do that the original problem is at zero percent.  </p> <p>It is guaranteed that some form of conversion is necessary.</p>
+
+<pl-file-editor
+  file-name="proof.txt"
+  ace-theme="ace/theme/monokai" >
+I0. S -> . a E f { a: s1 }
+       | . x F   { x: s2 }
+</pl-file-editor>
+
+<div style="display: none;">
+    <pl-string-input answers-name="treeBox">
+    </pl-string-input>
+</div>
+
+
+<button title="Render" type="button" onclick="doit()">Render</button>
+
+<div id="bar">This is the grammar the autograder will see: <br/> <span id="bar_contents">\(\{\}\)</span></div>
+
+<div id="errorDiv"></div>
+
+<p>This should auto-render after you change something and click outside of the editor box, but you can use the Render button to force it to render.</p>
+
+<script>
+ // document.getElementById("tree").style.display="none";
+ const editorElement = document.querySelector('.question-form .editor');
+ const treeBox = document.querySelector('.question-form .form-control');
+
+
+ function set_tex_val(elem, tex) {
+     while (elem.firstChild) {
+         elem.removeChild(elem.lastChild);
+     }
+     elem.appendChild(MathJax.tex2svg(tex).children[0]);
+ }
+ 
+ function doit() {
+    var errorDiv = document.getElementById("errorDiv");
+    errorDiv.innerHTML = "";
+    var contents = document.getElementById("bar_contents");
+    const editorElement = document.querySelector('.question-form .editor')
+    const editor = ace.edit(editorElement)
+    const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
+    try {
+        parser.feed(editor.getValue());
+        //parser.feed(sol_x);
+        var results = parser.results[0];
+        var strResult = dataToString(results);
+        set_tex_val(contents, latexifyItemSet(strResult));
+        treeBox.value = JSON.stringify(results); 
+     } catch (err) {
+   errorDiv.innerHTML = '<pre>' + err.toString().replace(/\n/g,'<br/>') + '</pre>';
+     }
+     return 0;
+}
+$(document).ready(function() {
+    var gradeButton = document.querySelector('.question-form .question-grade');
+    gradeButton.addEventListener("click", doit);
+    editorElement.addEventListener("change",doit);
+});
+</script>
+</pl-question-panel>
+
+<pl-submission-panel>
+    <pl-external-grader-results></pl-external-grader-results>
+</pl-submission-panel>
