@@ -1,0 +1,94 @@
+<pl-question-panel>
+<div class="pl-requires-svg-mathjax"></div> 
+
+<script src="{{ options.client_files_course_url }}/big-step-proof-trees/moo.js"></script>
+<script src="{{ options.client_files_course_url }}/big-step-proof-trees/nearley.js"></script>
+<script src="{{ options.client_files_course_url }}/big-step-proof-trees/bigStepProofTreeParser.js"></script>
+<script src="{{ options.client_files_course_url }}/big-step-proof-trees/bigStepProofTree.js"></script>
+  <p>
+    Write a proof tree for the following judgement:
+
+    \[ \lt \mathtt{if}\ x \gt y\ \mathtt{then}\ m:=x * x\ \mathtt{else}\ m := y * y\ \mathtt{fi},
+    \{ x:=10, y:=20 \} \gt \Downarrow \{ x:=10, y:=20, m:=400 \} \]
+
+      Use the <tt>Render</tt> button to display a mathematical version and check the syntax of
+      your entry.  Each line of your tree should have the following components:
+      <ol>
+          <li> a number followed by a period to indicate its depth in the tree.  0 is the root.</li>
+	  <li> a configuration, in the form <tt>&lt;</tt> $stmt$, s$n$ <tt>&gt;</tt> (where $n$ is an integer) or as a set of variable assignments.  For example, the notation <tt>s2</tt> represents $\sigma_2$. </li>
+
+	  <li> A downarrow operator as <tt>||</tt>, <tt>||e</tt>, or <tt>||b</tt>, as appropriate.
+          <li> An value </li>
+          <li> A rule name in parenthesis.</li>
+      </ol>
+
+      If you use <tt>s</tt> or <tt>s1</tt>, etc. in your proof tree, you must follow the tree with their expanded out
+      definitions.
+  </p>
+  <p>The starter code shows a valid tree for a proof of \( \lt m := x + 1, \sigma \gt \Downarrow \sigma_2 \).
+
+  Here are the <a href="{{ options.client_files_course_url }}/big-step-proof-trees/big-step-rules.pdf">big step rules</a>.
+
+<pl-file-editor
+  file-name="proof.txt"
+  ace-theme="ace/theme/monokai" >
+0. < m := x + y, s> || s2 (Assign)
+1. < x + 1, s > ||e 10 (Arith)
+2. < x, s > ||e 3 (Var)
+2. < 1, s > ||e 1 (Const)
+
+s = {x:=3}
+s2 = {x:=3,m:=4}
+</pl-file-editor>
+
+<div style="display: none;">
+    <pl-string-input answers-name="treeBox">
+    </pl-string-input>
+</div>
+
+
+<button title="Render" type="button" onclick="doit()">Render</button>
+
+<div id="bar">Your proof tree: <span id="bar_contents">\(\{\}\)</span></div>
+<div id="errorDiv"></div>
+
+<b>Important:</b> you need to click Render before submitting your answer!
+Your grade will be based on the edit distance between your submission and the solution.
+
+<script>
+
+ const editorElement = document.querySelector('.question-form .editor');
+ const treeBox = document.querySelector('.question-form .form-control');
+
+ function set_tex_val(elem, tex) {
+     while (elem.firstChild) {
+         elem.removeChild(elem.lastChild);
+     }
+     elem.appendChild(MathJax.tex2svg(tex).children[0]);
+ }
+ 
+ function doit() {
+    var errorDiv = document.getElementById("errorDiv");
+    errorDiv.innerHTML = "";
+    var contents = document.getElementById("bar_contents");
+    const editorElement = document.querySelector('.question-form .editor')
+    const editor = ace.edit(editorElement)
+    const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
+    const input = editor.getValue().replace(/\r\n/g,"\n"); // Replace CRLF with LF
+    try {
+        parser.feed(input);
+        set_tex_val(contents, displayTree(treeify(parser.results[0].tree)));
+        var theTree = parser.results[0];
+        treeBox.value = JSON.stringify(theTree); 
+     } catch (err) {
+	 errorDiv.innerHTML = '<pre>' + err.toString().replace(/\n/g,'<br/>') + '</pre>';
+     }
+     return 0;
+}
+$(document).ready(function() {
+    var gradeButton = document.querySelector('.question-form .question-grade');
+    gradeButton.addEventListener("click", doit);
+});
+</script>
+
+</pl-question-panel>
