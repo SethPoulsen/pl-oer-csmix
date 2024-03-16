@@ -1,0 +1,41 @@
+<pl-question-panel>
+    <p>
+      Consider the relations below with the following properties.
+      Note that T(R) is the number of tuples in relation R and V(R, a) is the number of distinct values of attribute a in relation R.</p>
+      {{{params.table}}}
+         <ul>
+        <li>Find the best (by cost) left-deep join order to join all of the above tables.</li>
+            <li> For writing your answer to join order, write a join order of <code>(((AB)C)D)</code> as <code>ABCD</code>-- drop the parentheses.</li>
+            <li>Make sure to ceil each result of your computation. When calculating the overall size and cost, use the ceil'ed results you obtained for the intermediate steps.</li>
+            <li><b>IMPORTANT: </b>Remember that, in a two-table join, the smaller table always comes first. For example, if <code>B.size < A.size</code>, then <code>BAC</code> would be the correct answer, rather than <code>ABC</code>.</li>
+            <li><b>IMPORTANT: </b>When estimating the size of the joined table, please use the join order at the minimal cost. For example, if <code>BCA.cost < ABC.cost</code>, then <code>ABC.size</code> should be estimated by the order <code>BCA</code> </li>
+       </ul><br>
+ 
+</pl-question-panel>
+
+<pl-string-input answers-name="size_AB" label="AB Size:"></pl-string-input>
+<pl-string-input answers-name="size_AC" label="AC Size:"></pl-string-input>
+<pl-string-input answers-name="size_AD" label="AD Size:"></pl-string-input>
+<pl-string-input answers-name="size_BC" label="BC Size:"></pl-string-input>
+<pl-string-input answers-name="size_BD" label="BD Size:"></pl-string-input>
+<pl-string-input answers-name="size_CD" label="CD Size:"></pl-string-input>
+
+
+<pl-string-input answers-name="size_ABC" label="ABC Size:"></pl-string-input>
+<pl-string-input answers-name="size_ABD" label="ABD Size:"></pl-string-input>
+<pl-string-input answers-name="size_ACD" label="ACD Size:"></pl-string-input>
+<pl-string-input answers-name="size_BCD" label="BCD Size:"></pl-string-input>
+<pl-string-input answers-name="cost_ABC" label="ABC Cost:"></pl-string-input>
+<pl-string-input answers-name="cost_ABD" label="ABD Cost:"></pl-string-input>
+<pl-string-input answers-name="cost_ACD" label="ACD Cost:"></pl-string-input>
+<pl-string-input answers-name="cost_BCD" label="BCD Cost:"></pl-string-input>
+
+<pl-string-input answers-name="plan_ABC" label="ABC Plan:"></pl-string-input>
+<pl-string-input answers-name="plan_ABD" label="ABD Plan:"></pl-string-input>
+<pl-string-input answers-name="plan_ACD" label="ACD Plan:"></pl-string-input>
+<pl-string-input answers-name="plan_BCD" label="BCD Plan:"></pl-string-input>
+
+
+<pl-string-input answers-name="size" label="Overall Minimum Size:"></pl-string-input>
+<pl-string-input answers-name="cost" label="Overall Minimum Cost:"></pl-string-input>
+<pl-string-input answers-name="joinorder" label="Overall Join Order:"></pl-string-input>
