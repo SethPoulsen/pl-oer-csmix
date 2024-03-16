@@ -1,0 +1,11 @@
+{
+    "uuid": "821f89e8-eb18-4feb-b073-05173042480b",
+    "title": "Conflict-Serializable",
+    "topic": "Transactions",
+    "tags": [
+        "autograded",
+        "Transactions"
+    ],
+    "showCorrectAnswer": true,
+    "type": "v3"
+}

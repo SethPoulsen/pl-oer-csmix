@@ -1,0 +1,293 @@
+<pl-question-panel>
+  <p>
+    Consider the following schedule $S_1$ followed by transactions <span>${{params.transactions}}$</span> on database objects ${{params.elements}}$. 
+  </p> 
+  <span id="transactionsHolder" style="display: none;">{{params.transactions}}</span>
+  <p id='dataHolder'>$S1: {{params.seq_transactions}}$</p>
+  <p>Please follow the solution format to draw the precedence graph and determine if $S_1$ is conflict-serializable</p>
+</pl-question-panel> 
+<p>Scratch Canvas:</p>
+  <canvas id="graphCanvas" width="800" height="200"></canvas><br/><br/>
+<pl-matrix-component-input answers-name="matrixA" label="$Graph=$"></pl-matrix-component-input><br/><br/>
+  <p>
+    The graph 
+    <pl-dropdown sort="ascend" answers-name="q1">
+      {{#params.q1}}
+        <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
+      {{/params.q1}}
+    </pl-dropdown>
+    acyclic.
+    So $S1$
+    <pl-dropdown sort="ascend" answers-name="q2">
+      {{#params.q2}}
+        <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
+      {{/params.q2}}
+    </pl-dropdown>
+    conflict-serializable.
+  </p>
+  <p><u><b>Solution Format: </b></u>input only 0 or 1 in adjancy matrix $Graph$ for the 
+    the precedence graph. If $Graph[i][j] = 1$, then $T_i$ precedes and conflicts with an action of $T_j$. 
+    If $Graph[i][j] = 0$, then there is no conflict action between $T_i$ and $T_j$.
+  </p>
+</pl-question-panel>
+
+<!-- Script for drawing helper functions -->
+<script>
+
+var canvas = document.getElementById('graphCanvas');
+var ctx = canvas.getContext('2d');
+var circles = []
+var lines = []
+
+function drawCircle(x, y, radius, text) {
+  // Draw the circle
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  ctx.strokeStyle = 'black';
+  ctx.stroke();
+
+  // Draw the text in the center of the circle
+  ctx.fillStyle = 'black';
+  ctx.font = '24px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, x, y);
+
+  circles.push({"x": x, "y": y, "radius": radius, "text": text})
+}
+
+function drawArrowhead(x, y, cpX, cpY) {
+  // Calculate the angle of the arrow
+  var angle = Math.atan2(y - cpY, x - cpX);
+
+  // Draw the arrowhead lines
+  var arrowSize = 12;
+  ctx.beginPath();
+  
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - arrowSize * Math.cos(angle - Math.PI / 6), y - arrowSize * Math.sin(angle - Math.PI / 6));
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - arrowSize * Math.cos(angle + Math.PI / 6), y - arrowSize * Math.sin(angle + Math.PI / 6));
+  
+  ctx.stroke();
+}
+
+function drawDirectedQuadraticCurveLine(s, e, flag) {
+  // Calculate the direction vector
+    let x1 = s.x
+    let y1 = s.y
+    let x2 = e.x
+    let y2 = e.y
+    let radius = s.radius
+    
+    var dx = x2 - x1;
+    var dy = y2 - y1;
+    var angle = Math.atan2(dy, dx);
+
+    // Calculate the end points at the edges of the circles
+    var x1End = x1 + Math.cos(angle) * radius; // Assuming the radius of the circles is 30
+    var y1End = y1 + Math.sin(angle) * radius;
+    var x2Start = x2 - Math.cos(angle) * radius;
+    var y2Start = y2 - Math.sin(angle) * radius;
+
+    // Calculate the control point for the quadratic curve
+    var controlX = (x1End + x2Start) / 2;
+    var controlY = 0;
+    if (!flag) {
+      controlY = y1End - 120;
+    }
+    else {
+      controlY = y1End + 120;
+    }
+
+    // Draw the quadratic curve line
+    ctx.beginPath();
+    ctx.moveTo(x1End, y1End);
+    ctx.lineWidth = 1.5;
+    ctx.quadraticCurveTo(controlX, controlY, x2Start, y2Start);
+    ctx.strokeStyle = 'black';
+    ctx.stroke();
+  
+    // Draw an arrowhead at the end of the line
+    drawArrowhead(x2Start, y2Start, controlX, controlY);
+    lines.push({"start": s, "end": e, "flag": flag});
+    
+}
+
+function shallowEqual(object1, object2) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (let key of keys1) {
+    if (object1[key] !== object2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+} 
+
+
+</script>
+
+
+<!-- Script for drawing graph -->
+<script>
+  var trans= document.getElementById("transactionsHolder").innerText.replace(/\s/g, '').split(",")
+  var trans_cnt = trans.length
+
+  var adjancyMatrix = Array.from({ length: trans_cnt}, () =>
+    Array.from({ length: trans_cnt }, () => false)
+  );
+ 
+  var init = Array.from({ length: trans_cnt}, () =>
+    Array.from({ length: trans_cnt }, () => 0)
+  );
+
+  var emptyFlag = true
+
+  function drawInitialCircle() {
+    var space = 800 / trans_cnt
+    var y = 100
+    var r = 50
+    for (let i=1; i<trans_cnt + 1; i++) {
+      let x = i * space - space / 2
+      drawCircle(x, y, r, trans[i-1][0] + trans[i-1][2]);
+    }
+  }
+  
+  function redrawCanvas(s, e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let temp_lines = JSON.parse(JSON.stringify(lines));
+    lines = []
+    let temp_c = JSON.parse(JSON.stringify(circles));
+    circles = []
+
+    for (let i = 0; i < temp_lines.length; i++) {
+      if (!shallowEqual(s, temp_lines[i].start) || !shallowEqual(e, temp_lines[i].end) ) {
+        drawDirectedQuadraticCurveLine(temp_lines[i].start, temp_lines[i].end, temp_lines[i].flag)
+      }
+    }
+
+    for (let i=0; i < temp_c.length; i++) {
+      drawCircle(temp_c[i].x, temp_c[i].y, temp_c[i].radius, temp_c[i].text)
+    }
+  }
+
+  function drawGraph() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawInitialCircle()
+    if (emptyFlag) {
+      //just begin the question
+      return;
+    }
+    console.log(init)
+    let m = init.length
+    let n = init[0].length
+    for (var i=0; i<m; i++) {
+      for (var j=0; j<m; j++) {
+        value = init[i][j]
+        if (isNaN(value)) {
+          init[i][j] = 0
+          throw new Error('not a number');
+          return;
+        }
+        
+        if (i == j && (value != 0)) {
+          throw new Error('cannot connect with itself');
+          return;
+        }
+
+        if (value == 1) {
+          let start = circles[i]
+          let end = circles[j]
+          drawDirectedQuadraticCurveLine(start, end, !adjancyMatrix[j][i])
+          adjancyMatrix[i][j] = !adjancyMatrix[j][i]
+        }
+        else if (value == 0) {
+          redrawCanvas(circles[i], circles[j])
+          adjancyMatrix[i][j] = !adjancyMatrix[j][i]
+        }
+        else {
+          return;
+        }
+      }
+    }
+
+  }
+
+  function scratchRender(row, column, value) {
+    try {
+      if (row != -1) {
+        if (value == "") {
+          init[row][column] = 0
+        }
+        else {
+          init[row][column] = parseInt(value)
+        }
+        emptyFlag = false
+      }
+      drawGraph()
+    } catch (err) {
+      console.log(err)
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.textAlign = "center"; 
+      if (err.message == "not a number") {
+        ctx.fillText('Invalid formatting: can only input number', canvas.width / 2, canvas.height / 2)
+      }
+      else {
+        ctx.fillText('Invalid formatting: transaction cannot be conflict with itself', canvas.width / 2, canvas.height / 2)
+      }
+      circles = []
+      lines = []
+    }
+  }
+
+  function justBegin() {
+
+    console.log("just begin!!!")
+    drawInitialCircle()
+  
+  }
+
+
+
+</script>
+
+<!-- Script for visiting/refreshing page -->
+<script>
+
+  var matrix_table = document.getElementsByTagName("table")[0]
+  var rows = matrix_table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+  for (let i=0; i<rows.length; i++) {
+    let cells = rows[i].getElementsByTagName('input')
+    for (let j=0; j<cells.length; j++) {
+      if (cells[j].value != "") {
+        emptyFlag = false
+      }
+      if (cells[j].value == "1") {
+        init[i][j] = 1
+        adjancyMatrix[i][j] = !adjancyMatrix[j][i]
+      }
+      cells[j].oninput = () => scratchRender(i, j, cells[j].value)
+    }
+  }
+
+  if (emptyFlag) {
+    justBegin()
+  }
+  else {
+    scratchRender(-1, -1, -1)
+  }
+
+
+
+
+
+</script>
