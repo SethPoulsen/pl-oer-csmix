@@ -2,10 +2,10 @@
     "uuid": "520e089b-8491-4115-8177-6985102ad7ee",
     "title": "SWC Survey Sandbox",
     "singleVariant": true,
-    "topic": "SQL",
+    "topic": "Database Systems",
     "tags": [
         "sqlite",
-        "sandbox"
+        "author:mussulma@illinois.edu"
     ],
     "type": "v3"
 }
