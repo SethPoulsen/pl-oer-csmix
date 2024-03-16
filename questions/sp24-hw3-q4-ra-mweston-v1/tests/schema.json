@@ -1,0 +1,20 @@
+{
+  "Students": [
+    "NetId",
+    "FirstName",
+    "LastName",
+    "Department"
+  ],
+  "Enrollments": [
+    "NetId",
+    "CRN",
+    "Credits",
+    "Score"
+  ],
+  "Courses": [
+    "CRN",
+    "Title",
+    "Department",
+    "Instructor"
+  ]
+}
