@@ -1,0 +1,22 @@
+{
+    "uuid": "5f460401-957c-405c-a11c-2a61993ee9de",
+    "title": "New Century US Movies",
+    "topic": "Database Systems",
+    "type": "v3",
+    "singleVariant": true,
+    "gradingMethod": "External",
+    "tags": [
+        "MongoDB Queries",
+        "author:alawini@illinois.edu"
+    ],
+    "externalGradingOptions": {
+        "enabled": true,
+        "image": "thegamer1907/cs411-mongo:old-shell",
+        "serverFilesCourse": [
+            "mongo-grader/",
+            "grader/"
+        ],
+        "entrypoint": "/grade/serverFilesCourse/mongo-grader/run.sh",
+        "timeout": 200
+    }
+}

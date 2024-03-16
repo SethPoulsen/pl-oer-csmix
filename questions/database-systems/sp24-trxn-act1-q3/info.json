@@ -1,0 +1,18 @@
+{
+    "uuid": "7578dfa0-43c8-4e0b-aabf-7b319fde6595",
+    "title": "Isolation Levels",
+    "topic": "Database Systems",
+    "tags": [
+        "Transactions",
+        "author:alawini@illinois.edu"
+    ],
+    "options": {
+        "transactions": [
+            "read committed",
+            "read committed"
+        ],
+        "schedule_length": 7,
+        "relation": "ABC"
+    },
+    "type": "v3"
+}

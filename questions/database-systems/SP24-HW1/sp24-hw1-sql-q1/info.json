@@ -1,0 +1,22 @@
+{
+    "uuid": "6bd4b02d-fc15-4bae-997e-36abbfb6d316",
+    "title": "New and Exclusive Products",
+    "topic": "Database Systems",
+    "type": "v3",
+    "tags": [
+        "SQL",
+        "author:alawini@illinois.edu"
+    ],
+    "singleVariant": true,
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "enabled": true,
+        "image": "alawini/cs411-sql:latest",
+        "serverFilesCourse": [
+            "sql-grader/",
+            "grader/"
+        ],
+        "entrypoint": "/grade/serverFilesCourse/sql-grader/run.sh",
+        "timeout": 20
+    }
+}
