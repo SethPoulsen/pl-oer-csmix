@@ -2,7 +2,10 @@
     "uuid": "8407f10c-246c-4d59-9af8-f431d88603d7",
     "title": "Big Step Proof Tree if1",
     "topic": "Compilers",
-    "tags":["Typing and Type Systems"],
+    "tags":[
+        "Typing and Type Systems",
+        "author:mattox@illinois.edu"
+    ],
     "type": "v3",
     "gradingMethod": "External",
     "singleVariant": true,

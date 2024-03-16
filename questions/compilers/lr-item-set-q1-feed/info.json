@@ -2,7 +2,9 @@
     "title": "LR Item Sets q1",
     "uuid": "9a670fda-4cb9-41f3-a810-f79a987f4540",
     "topic": "Compilers",
-    "tags": ["LR Parsing"],
+    "tags": ["LR Parsing",
+            "author:mattox@illinois.edu"
+            ],
     "type": "v3",
     "gradingMethod": "External",
     "externalGradingOptions": {
