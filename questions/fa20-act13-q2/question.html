@@ -1,0 +1,20 @@
+<pl-question-panel>
+  <p> Consider the functional dependencies:<br> {{params.fds}}</p>
+  <p> Fill out the closures for the following.</p>
+</pl-question-panel>
+
+<div class="alert alert-primary" role="alert">
+<b>Solution Format:</b>
+<pre>
+Given the FDs A->B and A->C. The attribute closure of {A}+ = {A,B,C}. 
+Your solution should be formatted as follows:</pre>
+<code>A, B, C</code>
+</div>
+
+<!-- ok, so the parser for params eats curly braces, so we have to use the literal html character thing to write them -->
+<pl-string-input answers-name="A" label="&#123;{{params.A}}&#125;+="></pl-string-input>
+<pl-string-input answers-name="B" label="&#123;{{params.B}}&#125;+="></pl-string-input>
+<pl-string-input answers-name="C" label="&#123;{{params.C}}&#125;+="></pl-string-input>
+<pl-string-input answers-name="D" label="&#123;{{params.D}}&#125;+="></pl-string-input>
+<pl-string-input answers-name="E" label="&#123;{{params.E}}&#125;+="></pl-string-input>
+<pl-string-input answers-name="F" label="&#123;{{params.F}}&#125;+="></pl-string-input>
