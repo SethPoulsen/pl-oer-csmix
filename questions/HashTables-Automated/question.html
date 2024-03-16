@@ -1,0 +1,122 @@
+<pl-question-panel>
+        <p>You will be given a hash table (<b>threshold={{params.threshold}}</b>) and a pair of insertions to perform on it. For each insertion, submit a representation of the resulting hash table.</p> <br>
+        <p><b>Note: </b>We have given you your own hash table renderer to assist you in solving this question. The table should be extended when r/N >= threshold.</p>
+        <p><b>Operation: </b> {{params.operation}}</p>
+        <p><b>Initial hash table representation: </b> <pl-code>{{params.initial_table}}</pl-code></p>
+        <canvas id='myCanvas'></canvas>
+        <div id='dataHolder'>{{params.initial_table}}</div>
+        <p>Scratch Canvas:</p>
+        <canvas id='scratchCanvas'></canvas> <br><br>
+        <p>First, insert {{params.insertion_I}}.</p>
+        <pl-string-input answers-name="question_I" remove-spaces="true" size="75"></pl-string-input><br><br>
+        <p>Next, insert {{params.insertion_II}}.</p>
+        <pl-string-input answers-name="question_II" remove-spaces="true" size="75"></pl-string-input><br><br>
+        <p><b>Solution format: </b> Format your solution as a dictionary, with each value being an array of hashes. A good starting point is the provided initial representation. Buckets with no values inside can be represented as empty lists.</p>
+        <script>
+            let desc = document.getElementById('dataHolder');
+            const canvas = document.getElementById('myCanvas');
+            const sCanvas = document.getElementById('scratchCanvas');
+            let cw = canvas.width = canvas.clientWidth = 800;
+            sCanvas.width = sCanvas.clientWidth = 800;
+		    let ch = canvas.height = canvas.clientHeight = 300;
+		    sCanvas.height = sCanvas.clientHeight = 300;
+            // Draw a tree on the canvas.
+            let max_ele = 4;
+            let myData = desc.innerHTML;
+            //
+            let bw = 80;
+            let bh = 50;
+            let sh = 20;
+            let sv = 30;
+            function drawTree(table, canvas, color) {
+                let y = 20;
+                let ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0,0,cw,ch);
+                ctx.fillStyle = ctx.strokeStyle = color;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 1;
+                ctx.font = 'bold 14px courier new';
+                // Let's start by drawing a box for each number
+                table = JSON.parse(table.replaceAll("'",'"'));
+                let keys = [];
+                for (var k in table) {
+                    keys.push(k);
+                }
+                keys.sort();
+                console.log(keys);
+                keys.forEach(k => {
+                    contents = ''
+                    for (let i=0; i < table[k].length; i+=2) {
+                        if (i == table[k].length-1) {
+                            contents += ' --> ['+table[k][i]+']';
+                        } else {
+                            contents += ' --> ['+table[k][i]+', '+ table[k][i+1] +']';
+                        }
+                    }
+                    k = k + contents;
+                    ctx.fillText(k,20,y+15);
+                    y += 30;
+                });
+                /*for (let i=0; i<tree.length; i++) {
+                    let r = tree[i];
+                    let nrl = i<tree.length-1?tree[i+1].length:0;
+                    let x = (cw - bw*r.length - sh*(r.length-1))/2;
+                    let nrlx = (cw - bw*nrl - sh*(nrl-1))/2 + bw/2;
+                    r.forEach(b=>{ // no need to reposition, this is more elegant anyways.
+                        ctx.beginPath();
+                        ctx.rect(x, y, bw, bh);
+                        for (let j=1; j<max_ele; j++) { // top row
+                            ctx.moveTo(x+(j/max_ele)*bw, y);
+                            ctx.lineTo(x+(j/max_ele)*bw, y+bh/2);
+                        }
+                        for (let j=1; j<=max_ele; j++) { // bottom row
+                            ctx.moveTo(x+(j/(max_ele+1))*bw, y+bh/2);
+                            ctx.lineTo(x+(j/(max_ele+1))*bw, y+bh);
+                        }
+                        // Center line
+                        ctx.moveTo(x, y+bh/2);
+                        ctx.lineTo(x+bw, y+bh/2);
+                        // Content
+                        xt = x;
+                        b.forEach(v=>{
+                            ctx.fillText(v,xt+2,y+15);
+                            xt += bw*(1/(max_ele));
+                        });
+                        // Connections
+                        if (i != tree.length-1) {
+                            for (let j=0; j<b.length+1; j++) {
+                                ctx.moveTo(x+((j+.5)/(max_ele+1))*bw, y+bh);
+                                ctx.lineTo(nrlx, y+bh+sv);
+                                nrlx+=bw+sh;
+                            }
+                        }
+                        ctx.stroke();
+                        x += bw + sh;
+                    });
+                    y += bh + sv;
+                }*/
+            }
+            function scratchRender(x) {
+                try {
+                    drawTree(x, sCanvas, '#FF0000');
+                } catch(err) {
+                    let ctx = sCanvas.getContext('2d');
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0,0,cw,ch);
+                    ctx.fillStyle = '#FF0000';
+                    ctx.fillText('Invalid Formatting',25,25)
+                }
+            }
+            if (document.getElementsByName('question_I')[0].value == '') {
+                document.getElementsByName('question_I')[0].value = myData;
+            }
+            drawTree(myData, canvas, '#00FF00');
+            let myInput_I = document.getElementsByName('question_I')[0];
+            myInput_I.onclick = myInput_I.onchange = myInput_I.onkeyup = myInput_I.oninput = function() { scratchRender(myInput_I.value) };
+            let myInput_II = document.getElementsByName('question_II')[0];
+            myInput_II.onclick = myInput_II.onchange = myInput_II.onkeyup = myInput_II.oninput = function() { scratchRender(myInput_II.value) };
+            scratchRender((myInput_II.value == '') ? myInput_I.value : myInput_II.value);
+            desc.innerHTML = '';
+        </script>
+</pl-question-panel>
