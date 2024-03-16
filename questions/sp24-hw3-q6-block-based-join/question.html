@@ -1,0 +1,106 @@
+<pl-question-panel>
+    <p>
+    The following three tables from a museum system database are stored on the disk:
+    <br>
+    <br>
+    <strong>Paintings</strong>(PaintingID, PaintingName, ArtistName, FinishYear)
+    <br>
+    <strong>Collections</strong>(PaintingID, MuseumID, MuseumSection, FloorNum)
+    <br>
+    <strong>Museums</strong>(MuseumID, MuseumName, Address)
+    <br>
+    <br>
+    Consider the following query:
+    <br>
+    <br>
+    <strong>SELECT</strong> PaintingID, MuseumSection, Address
+    <br>
+    <strong>FROM</strong> Paintings, Collections, Museums
+    <br>
+    <strong>WHERE</strong> Collections.MuseumID=Museums.MuseumID <strong>AND</strong> Paintings.PaintingID=Collections.PaintingID
+    <br>
+    <br>
+    The Joining strategy is as follows:
+    <br>
+    <pl-figure file-name="sp24-hw3-q6-join.jpg" directory="clientFilesCourse" width="750px"></pl-figure>
+    <br>
+    The statistics of these tables are shown below:
+    <br>
+    <table style = "border: 1px solid black; border-collapse: collapse;">
+      <tr style = "border: 1px solid black; border-collapse: collapse;">
+        <td style = "border: 1px solid black; border-collapse: collapse;">Table</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">Total Tuples</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">Total Occupied Blocks</td>
+      </tr>
+      <tr style = "border: 1px solid black; border-collapse: collapse;">
+        <td style = "border: 1px solid black; border-collapse: collapse;">Paintings</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">{{params.pTuples}}</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">{{params.bp}}</td>
+      </tr>
+      <tr style = "border: 1px solid black; border-collapse: collapse;">
+        <td style = "border: 1px solid black; border-collapse: collapse;">Collections</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">{{params.cTuples}}</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">{{params.bc}}</td>
+      </tr>
+      <tr style = "border: 1px solid black; border-collapse: collapse;">
+        <td style = "border: 1px solid black; border-collapse: collapse;">Museums</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">{{params.mTuples}}</td>
+        <td style = "border: 1px solid black; border-collapse: collapse;">{{params.bm}}</td>
+      </tr>
+    </table>
+    <br>
+    Assume the number of blocks in memory is M = {{params.mem}}. Answer the following questions:
+    <br>
+    <br>
+    Please note: When calculating the cost of block-based nested loop join, you should make a wise choice of outer and inner relation, which should <strong>minimize</strong> the cost. <strong>Round up</strong> the final result to the nearest integer if needed.
+    <br>
+    <br>
+    Calculate the optimal cost to perform the join in "Join A". 
+    <br>
+    Is one-pass join feasible for this question? 
+    <br>
+    If YES, calculate the cost using one-pass join. 
+    <br>
+    If NO, calculate the cost using block-based nested loop join.
+    <br>
+    <br>
+    <pl-string-input answers-name="questionI"></pl-string-input>
+    <br>
+    <br>
+<!--</p>-->
+<!--    <pl-file-editor file-name="comments.txt" ace-mode="ace/mode/text"></pl-file-editor>-->
+<!--<p>-->
+<p>
+    Assume that after "Join A", the joining result would be stored back to the disk first and the resulting table has {{params.joinATuples}} tuples. Each block can contain up to {{params.bjoinA}} tuples in the resulting joined relation. Assume that the tuples are densely stored (i.e. clustered file organization).
+    <br>
+    <br>
+    What is the total number of blocks for the result after "Join A"?
+    <br>
+    <br>
+    <pl-string-input answers-name="questionII"></pl-string-input>
+    <br>
+    <br>
+    Is one-pass join feasible for “Join B”?
+    <br>
+    If YES, calculate the cost using one-pass join.
+    <br>
+    If NO, calculate the cost using block-based nested loop join.
+    <br>
+    <br>
+    <pl-string-input answers-name="questionIII"></pl-string-input>
+    <br>
+    <br>
+</p>
+</pl-question-panel>
+
+<p>
+    Please explain your answer and show steps below. This will be used for mannual re-grading.
+    <br>
+    <br>
+    <pl-file-editor file-name="show your steps.txt" ace-mode="ace/mode/text"></pl-file-editor>
+</p>
+
+<pl-submission-panel>
+    <pl-file-preview></pl-file-preview>
+    <pl-external-grader-results></pl-external-grader-results>
+</pl-submission-panel>
