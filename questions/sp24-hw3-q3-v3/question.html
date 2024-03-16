@@ -1,0 +1,42 @@
+
+<pl-question-panel>
+  <p>
+    Consider the following schedule for transactions operating on database objects {{params.relation}}. <b>Enforce the locking protocol</b>. Note that the <b>locks must be released/downgraded whenever possible (while respecting the locking protocol!)</b>. Each transaction commits by the end of its last action.
+  </p>
+  
+  <code>{{params.schedule}}</code><br><br>
+  
+  <!--<p><b>Serial:</b> {{{params.isSerial}}}</p>
+  <p><b>Deadlock:</b> {{{params.hasDeadlock}}}</p>
+  <p><b>Downgrading:</b> {{{params.hasDowngrading}}}</p>-->
+
+  <b>Enforce the specified locking protocol</b>:<br>
+
+  <ul>
+   {{{params.isolevels}}}
+  </ul>
+
+  Note: <code>Ri(A)</code> means reading A for Transaction i. <code>Wi(A)</code> means writing A for Transaction i.<br><br>
+
+  <div class="alert alert-primary" role="alert">
+    <p><b>Solution Format:</b></p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p>For example, your solution may be formatted as follows: <code>S1(A);R1(A);REL1(A)</code></p>
+        <ul>
+          <li>Use <code>Si(A)</code> to indicate a shared lock for A in Transaction i. </li>
+          <li>Use <code>Xi(A)</code> to indicate an exclusive lock for A in Transaction i. </li>
+          <li>Use <code>RELi(A,B)</code> to indicate the release of the lock(s) A, B in Transaction i. </li>
+        </ul>
+      </li>
+      <li class="list-group-item"><b>Downgrades:</b> Use <code>Si(A)</code> to indicate a lock downgrade on an attribute, A, that Transaction i has an exclusive lock on. To downgrade multiple locks, use <code>Si(A);Si(B)</code> or <code>Si(A,B)</code>. If you must release some locks and downgrade others, <b>release locks FIRST</b>, then downgrade the others. Recall that in 2PL, lock releases/downgrades can only be done in the shrinking phase. <br><br>E.g. <code>X1(A);W1(A);X1(B);W1(B);REL1(B);S1(A);S2(B);R2(B);R1(A)</code></li>
+      <li class="list-group-item"><b>Upgrades:</b> Use <code>Xi(A)</code> to indicate a lock upgrade on an attribute, A, that Transaction i has a shared lock on. Recall that in 2PL, lock acquiring/upgrades can only be done in the growing phase. <br><br>E.g. <code>S1(A);R1(A);X1(A);W1(A)</code>...</li>
+      <li class="list-group-item"><b>Waiting:</b> If a request for a lock, A, is denied, add <code>WAITi(A)</code> after your attempt to lock A (<code>Si(A)</code> / <code>Xi(A)</code>), where i is the transaction that was denied. Resume this thread's execution when possible (reuse <code>Si(A)</code> / <code>Xi(A)</code> to indicate when that lock is granted). If multiple threads are waiting and can resume execution at once, the one that has been waiting longest should resume. <br><br>E.g. <code>X2(A);W2(A);X1(A);WAIT1(A);W2(A);REL2(A);X1(A);W1(A);REL1(A)</code></li>
+      <li class="list-group-item"><b>Deadlock:</b> If two or more transactions are waiting on each other to release locks and they cannot proceed, there is "deadlock". You can end your solution after the last <code>WAITi(A)</code>. <br>E.g. <code>X1(A);W1(A);X2(B);W2(B);X1(B);WAIT1(B);X2(A);WAIT2(A)</code></li>
+      <li class="list-group-item">When a transaction runs its final read or write, assume it commits, and is <b>finished</b>. Finished transactions should always release any locks they have.</li>
+      <li class="list-group-item">Separate all executions with <code>;</code>.</li>
+    </ul>
+  </div>
+  
+</pl-question-panel>
+<pl-string-input size=80 answers-name="schedule"></pl-string-input>
