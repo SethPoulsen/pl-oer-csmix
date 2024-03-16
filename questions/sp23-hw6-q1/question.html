@@ -1,0 +1,111 @@
+<pl-question-panel>
+	<h4>Database Description:</h4>
+	Below is a MongoDB database with three collections: <code>Movies</code>, <code>Actors</code>, and <code>Viewers</code>. 
+	
+	<table style="margin: auto;display: block;overflow-x: auto;white-space: nowrap;">
+		<tr>
+			<th><code>Movies</code></th>
+			<th><code>Actors</code></th>
+			<th><code>Viewers</code></th>
+		</tr>
+		<tr>
+			<td style="vertical-align: top; padding: 0 0.5em 0 0.5em;">
+				<div>
+				    <pl-code>
+{
+    "_id": {
+        "$oid": string
+    },
+    "movie_id": int,
+    "director": string,
+    "release_year": int,
+    "ratings": int,
+    "movie_name": string,
+    "country": string,
+    "genre": string,
+    "actors": [int],
+    "company": {
+        "name": string,
+        "start_year": int,
+        "country": string
+    }
+}</pl-code>
+                </div>
+			</td>
+			<td style="vertical-align: top; padding: 0 0.5em 0 0.5em;">
+			    <div>
+
+                <pl-code>
+{
+    "_id": {
+        "$oid": string
+        },
+    "actor_id": int,
+    "actor_name": string,
+    "birth_country": string
+}</pl-code>
+                </div>
+			</td>
+			<td style="vertical-align: top; padding: 0 0.5em 0 0.5em;">
+			    <div>
+				    <pl-code>
+{
+    "_id": {
+        "$oid": string
+    },
+    "viewer_id": int,
+    "viewer_name": string,
+    "birth_year": int,
+    "join_year": int,
+    "fav_movie": int,
+    "fav_actors": [int],
+    "fav_directors": [string]
+}</pl-code>
+                </div>
+			</td>
+		</tr>
+	</table>
+
+
+    <h3>Question Description:</h3>
+
+    <p>
+        A media company is interested in researching the audiences’ preference for <b>USA</b> movies that were released on or after 2000. Specifically, they want to know the audiences’ preferences across different genres.
+   </p>
+   <p>
+        For each genre of such movies, write a MongoDB query to compute the average rating (<code>avg_rating</code>) and the average released year (<code>avg_year</code>) of movies under that genre.
+The query should return the genre, <code>avg_rating</code>, and <code> avg_year</code>. Sort the results in the alphabetical order of genre.
+    </p>
+
+
+    <div class="alert alert-warning" role="alert">
+        <b>Notes:</b>
+        <ul>
+            <li>Please do not use the <code>pretty()</code> function.</li>
+        </ul>
+    </div>
+
+    <pl-file-editor file-name="query.js" ace-mode="ace/mode/javascript"></pl-file-editor>
+  
+    <br> 
+  <div class="alert alert-primary" role="alert">
+    <strong>Important Notes -- Cite your sources:</strong>
+    <br>
+    <p>Plagiarism is a serious offense that undermines academic integrity. Please remember the following:</p>
+    <ul>
+        <li>Citing external sources is permissible only if these resources were used as a reference. These sources include but are not limited to links, search engine queries, or other intelligent tools.</li>
+        <li>A general rule of thumb: You must write your own solution and document any sources you used to develop your solutions. The submitted code cannot come from external sources you did not write or come up with entirely.</li>
+        <li>If you use any external sources, be sure to properly explain how you use them and cite them.</li>
+        <li>Simply typing down a question and getting the answer from an external source without proper citation is considered plagiarism.</li>
+        <li>We will be using various tools, including prior semester records and plagiarism detection software, to verify patterns of solutions that may be suspiciously similar to external sources.</li>
+        <li>If you did not consult external sources, please type: I declear that I did not consult external resources.</li>
+    </ul>
+    <br>
+    <pl-file-editor file-name="sources.txt" min-lines=3></pl-file-editor>
+  </div>
+</pl-question-panel>
+
+<pl-submission-panel>
+    <pl-file-preview></pl-file-preview>
+    <pl-external-grader-results></pl-external-grader-results>
+</pl-submission-panel>
