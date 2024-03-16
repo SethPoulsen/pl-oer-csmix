@@ -1,0 +1,16 @@
+<pl-question-panel>
+  <p> Consider the functional dependencies on the relation R(A,B,C,D,E,F):<br> {{params.fds}}</p>
+  <p> Give all the candidate keys (comma separated).</p>
+</pl-question-panel>
+
+<div class="alert alert-primary" role="alert">
+<b>Solution Format:</b>
+<pre>
+Assuming the candidate keys for R1(A,B,C,D,E,F) are {A,B}, {A,D}, {A,E,F}. 
+Your solution should be formatted as follows:
+</pre>
+<code>AB, AD, AEF</code>
+</div>
+
+
+<pl-string-input display="block" answers-name="candidates"></pl-string-input>
