@@ -1,0 +1,18 @@
+{
+    "uuid": "d00ca9fc-3939-4913-801b-920bd9ae788f",
+    "title": "Uncovering the Hidden Gems of the Culinary Underdogs",
+    "topic": "Neo4j Queries",
+    "type": "v3",
+    "singleVariant": true,
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "enabled": true,
+        "image": "alawini/cs411-neo4j",
+        "serverFilesCourse": [
+            "neo4j-grader-test/",
+            "grader/"
+        ],
+        "entrypoint": "/grade/serverFilesCourse/neo4j-grader-test/run.sh",
+        "timeout": 240
+    }
+}

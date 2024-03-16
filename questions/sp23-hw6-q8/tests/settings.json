@@ -1,0 +1,4 @@
+{
+    "resetDB": false,
+    "dataset": ["restaurants"]
+}
