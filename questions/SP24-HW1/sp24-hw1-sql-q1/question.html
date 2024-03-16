@@ -1,0 +1,219 @@
+<pl-question-panel>
+  <!--<p>-->
+  <!--  Consider the following schema and scenario.-->
+  <!--</p>-->
+  <!--<table class="table table-sm" style="width: auto;">-->
+  <!--  <thead>-->
+  <!--    <tr>-->
+  <!--      <th><code>Students</code></th>-->
+  <!--    </tr>-->
+  <!--  </thead>-->
+  <!--  <tbody>-->
+  <!--    <tr>-->
+  <!--      <td style="margin: 10px; padding-right: 20px;">-->
+  <!--        <table class="table table-sm" style="width: auto;">-->
+  <!--          <thead class="thead-light">-->
+  <!--            <tr>-->
+  <!--              <th>Name</th>-->
+  <!--              <th>Type</th>-->
+  <!--            </tr>-->
+  <!--          </thead>-->
+  <!--          <tbody>-->
+  <!--            <tr>-->
+  <!--              <td><u>NetId</u></td>-->
+  <!--              <td>VARCHAR(8)</td>-->
+  <!--            </tr>-->
+  <!--            <tr>-->
+  <!--              <td>FirstName</td>-->
+  <!--              <td>VARCHAR(255)</td>-->
+  <!--            </tr>-->
+  <!--            <tr>-->
+  <!--              <td>LastName</td>-->
+  <!--              <td>VARCHAR(255)</td>-->
+  <!--            </tr>-->
+  <!--            <tr>-->
+  <!--              <td>Department</td>-->
+  <!--              <td>VARCHAR(255)</td>-->
+  <!--            </tr>-->
+  <!--          </tbody>-->
+  <!--        </table>-->
+  <!--      </td>-->
+  <!--    </tr>-->
+  <!--  </tbody>-->
+  <!--</table>-->
+  
+  <p>
+    Consider the following database schema for a mobile phone store:
+  </p>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th><code>Customers</code></th>
+        <th><code>Purchases</code></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="margin: 10px; padding-right: 20px;">
+          <table class="table table-sm" style="width: auto;">
+            <thead class="thead-light">
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><u>CustomerId</u></td>
+                <td>INT</td>
+              </tr>
+              <tr>
+                <td>FirstName</td>
+                <td>VARCHAR(255)</td>
+              </tr>
+              <tr>
+                <td>LastName</td>
+                <td>VARCHAR(255)</td>
+              </tr>
+              <tr>
+                <td>PhoneNumber</td>
+                <td>REAL</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td>
+
+          <table class="table table-sm" style="width: auto;">
+            <thead class="thead-light">
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><u>PurchaseId</u></td>
+                <td>INT</td>
+              </tr>
+              <tr>
+                <td>CustomerId</td>
+                <td>INT</td>
+              </tr>
+              <tr>
+                <td>ProductId</td>
+                <td>INT</td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td>INT</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th><code>Products</code></th>
+        <th><code>Brands</code></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+        <td style="margin: 10px; padding-right: 20px;">
+          <table class="table table-sm" style="width: auto;">
+            <thead class="thead-light">
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><u>ProductId</u></td>
+                <td>INT</td>
+              </tr>
+              <tr>
+                <td>ProductName</td>
+                <td>VARCHAR(255)</td>
+              </tr>
+              <tr>
+                <td>BrandName</td>
+                <td>VARCHAR(255)</td>
+              </tr>
+              <tr>
+                <td>YearReleased</td>
+                <td>INT</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td>
+
+          <table class="table table-sm" style="width: auto;">
+            <thead class="thead-light">
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><u>BrandName</u></td>
+                <td>VARCHAR(255)</td>
+              </tr>
+              <tr>
+                <td>YearEstablished</td>
+                <td>INT</td>
+              </tr>
+              <tr>
+                <td>CEO</td>
+                <td>VARCHAR(255)</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!--<p>-->
+  <!--  <b><code>Students</code></b>: table name.<br>-->
+  <!--  <u>NetId</u>: primary key in that table.<br>-->
+  <!--  Further questions follow the same convention: <b><code>boldColored</code></b> text means table name, and-->
+  <!--  <u>underlined</u> text means the primary key (and/or foreign keys) of that table.-->
+  <!--</p>-->
+
+  <!--<p>-->
+  <!--  A student left their i-card unattended inside the engineering library. Unfortunately, the card was worn off and we-->
+  <!--  can only see that their first name starts with 'J', and you believe that this student was either a CS or ECE student.-->
+  <!--  You decided to MASSMAIL potential students, but you first need to use your SQL knowledge to identify the list of-->
+  <!--  potential students. Output <code>NetId</code> and <code>FirstName</code>, ordered in descending order by their-->
+  <!--  <code>FirstName</code>.-->
+  <!--</p>-->
+  
+  <p>
+      An advertising company would like to know the newest, exclusive products released after 2015. They are only interested in products with a name that have the letter 'x' in them, since they think these are more exclusive. Output <code>ProductName</code>, <code>BrandName</code>, and <code>YearReleased</code>, ordered by newest products first, then sorted by <code>ProductName</code> in alphabetical order (to break ties).
+  </p>
+  
+
+  <div class="alert alert-warning" role="alert">
+    <strong>Note</strong>:
+    <ul>
+      <li>Do not use views.</li>
+    </ul>
+  </div>
+
+  <pl-file-editor file-name="query.sql" ace-mode="ace/mode/mysql"></pl-file-editor>
+</pl-question-panel>
+
+<pl-submission-panel>
+  <pl-file-preview></pl-file-preview>
+  <pl-external-grader-results></pl-external-grader-results>
+</pl-submission-panel>
