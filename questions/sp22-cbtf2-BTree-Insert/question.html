@@ -1,0 +1,109 @@
+<pl-question-panel>
+        <p>You will be given a B+ tree (d=2, n=4) and a series of operations to perform on it. Your task is to perform them and submit the updated B+ tree to us.</p>
+        <p>Implementation Strategy:</p>
+        <ul>
+        <li>Nodes prefer merging with the <b>RIGHT</b> sibling whenever possible</li>
+        <li>The middle key of a splitting node goes to the <b>RIGHT</b> node.</li>
+        <li>When an update requires you to add a new key to a non-leaf node, always select the <b>maximum</b> value possible.</li>
+        <li>When updating values in the parent node, please reuse values that are already in the leaf node.</li>
+        </ul>
+        <p><b>Note: </b>We have given you your own B+ tree renderer to assist you in solving this question. Whenever you click out of the answer field, the scratch canvas will update to match your current answer.</p>
+        <p><b>Operation: </b> {{params.operation}}</p>
+        <p><b>Initial tree representation: </b> <pl-code>{{params.initial_tree}}</pl-code></p>
+        <p id='dataHolder'>{{params.description}}</p>
+        <canvas id='myCanvas'></canvas>
+        <p>Scratch Canvas:</p>
+        <canvas id='scratchCanvas'></canvas> <br><br>
+        <pl-string-input answers-name="question" remove-spaces="true" size="75"></pl-string-input><br><br>
+        <p><b>Solution format: </b> Format your solution as a 3-dimensional array. The outermost array should be a list of tree levels, with each level being a list of nodes. A good starting point is the provided initial tree representation.</p>
+        <p><u><b>Note:</b></u> There is only one correct answer if you follow the instructions in "Implementation Strategy" (above). <!-- Therefore, even if the auto-grader does not accept your solution, it may get full points on manual grading. --></p>
+        <script>
+            let desc = document.getElementById('dataHolder');
+            const canvas = document.getElementById('myCanvas');
+            const sCanvas = document.getElementById('scratchCanvas');
+            let cw = canvas.width = canvas.clientWidth = 800;
+            sCanvas.width = sCanvas.clientWidth = 800;
+		    let ch = canvas.height = canvas.clientHeight = 300;
+		    sCanvas.height = sCanvas.clientHeight = 300;
+            console.log(desc.innerHTML);
+            // Draw a tree on the canvas.
+            let max_ele = 4;
+            let myData = JSON.parse(desc.innerHTML);
+            console.log(myData)
+            //
+            let bw = 80;
+            let bh = 50;
+            let sh = 20;
+            let sv = 30;
+            function drawTree(tree, canvas, color) {
+                let y = 20;
+                let ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0,0,cw,ch);
+                ctx.fillStyle = ctx.strokeStyle = color;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 1;
+                ctx.font = 'bold 14px courier new';
+                for (let i=0; i<tree.length; i++) {
+                    let r = tree[i];
+                    let nrl = i<tree.length-1?tree[i+1].length:0;
+                    let x = (cw - bw*r.length - sh*(r.length-1))/2;
+                    let nrlx = (cw - bw*nrl - sh*(nrl-1))/2 + bw/2;
+                    r.forEach(b=>{ // no need to reposition, this is more elegant anyways.
+                        ctx.beginPath();
+                        ctx.rect(x, y, bw, bh);
+                        for (let j=1; j<max_ele; j++) { // top row
+                            ctx.moveTo(x+(j/max_ele)*bw, y);
+                            ctx.lineTo(x+(j/max_ele)*bw, y+bh/2);
+                        }
+                        for (let j=1; j<=max_ele; j++) { // bottom row
+                            ctx.moveTo(x+(j/(max_ele+1))*bw, y+bh/2);
+                            ctx.lineTo(x+(j/(max_ele+1))*bw, y+bh);
+                        }
+                        // Center line
+                        ctx.moveTo(x, y+bh/2);
+                        ctx.lineTo(x+bw, y+bh/2);
+                        // Content
+                        xt = x;
+                        b.forEach(v=>{
+                            ctx.fillText(v,xt+2,y+15);
+                            xt += bw*(1/(max_ele));
+                        });
+                        // Connections
+                        if (i != tree.length-1) {
+                            for (let j=0; j<b.length+1; j++) {
+                                ctx.moveTo(x+((j+.5)/(max_ele+1))*bw, y+bh);
+                                ctx.lineTo(nrlx, y+bh+sv);
+                                nrlx+=bw+sh;
+                            }
+                        }
+                        ctx.stroke();
+                        x += bw + sh;
+                    });
+                    y += bh + sv;
+                }
+            }
+            function scratchRender() {
+                try {
+                    let temp = '{"myList": ' + document.getElementsByName('question')[0].value + '}';
+                    let myList = JSON.parse(temp).myList;
+                    console.log(myList);
+                    drawTree(myList, sCanvas, '#FF0000');
+                } catch(err) {
+                    let ctx = sCanvas.getContext('2d');
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0,0,cw,ch);
+                    ctx.fillStyle = '#FF0000';
+                    ctx.fillText('Invalid Formatting',25,25)
+                }
+            }
+            if (document.getElementsByName('question')[0].value == '') {
+                document.getElementsByName('question')[0].value = JSON.stringify(myData.initial_tree);
+            }
+            drawTree(myData.initial_tree, canvas, '#00FF00');
+            scratchRender();//drawTree(myData.initial_tree, sCanvas, '#FF0000');
+            desc.innerHTML = '';
+            let myInput = document.getElementsByName('question')[0];
+            myInput.onchange = myInput.onkeyup = myInput.oninput = scratchRender;
+        </script>
+</pl-question-panel>
